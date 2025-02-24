@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>yuxi的第一篇blog</title>
+  <title>Bert论文阅读</title>
   
-  <link rel="canonical" href="https://yuxi1005.github.io/%E9%9A%8F%E7%AC%94/yuxi%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87blog">
+  <link rel="canonical" href="https://yuxi1005.github.io/2025/02/24/Bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">
   
-  <meta name="description" content="phrased! and quite as true as any ob-servation in civilised life should be.阿尔杰农。这是完美的措辞！就像文明生活中的任何观察一样真实。   JACK. I am sick to death of clev-erness. E">
+  <meta name="description" content="总体about Bert1. 概述BERT（Bidirectional Encoder Representations from Transformers）是谷歌于2018年提出的基于Transformer架构的预训练语言模型。它通过双向上下文理解和大规模无监督预训练，显著提升了自然语言处理（NLP">
   
   
   <meta name="author" content="Yuxi">
@@ -24,21 +24,21 @@
   
   <meta property="og:site_name" content="yuxi" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="yuxi的第一篇blog" />
+  <meta property="og:title" content="Bert论文阅读" />
   
-  <meta property="og:description" content="phrased! and quite as true as any ob-servation in civilised life should be.阿尔杰农。这是完美的措辞！就像文明生活中的任何观察一样真实。   JACK. I am sick to death of clev-erness. E">
+  <meta property="og:description" content="总体about Bert1. 概述BERT（Bidirectional Encoder Representations from Transformers）是谷歌于2018年提出的基于Transformer架构的预训练语言模型。它通过双向上下文理解和大规模无监督预训练，显著提升了自然语言处理（NLP">
   
-  <meta property="og:url" content="https://yuxi1005.github.io/%E9%9A%8F%E7%AC%94/yuxi%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87blog" />
+  <meta property="og:url" content="https://yuxi1005.github.io/2025/02/24/Bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="yuxi的第一篇blog">
+  <meta name="twitter:title" content="Bert论文阅读">
   
-  <meta name="twitter:description" content="phrased! and quite as true as any ob-servation in civilised life should be.阿尔杰农。这是完美的措辞！就像文明生活中的任何观察一样真实。   JACK. I am sick to death of clev-erness. E">
-  
-  
+  <meta name="twitter:description" content="总体about Bert1. 概述BERT（Bidirectional Encoder Representations from Transformers）是谷歌于2018年提出的基于Transformer架构的预训练语言模型。它通过双向上下文理解和大规模无监督预训练，显著提升了自然语言处理（NLP">
   
   
-  <meta name="twitter:url" content="https://yuxi1005.github.io/%E9%9A%8F%E7%AC%94/yuxi%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87blog" />
+  
+  
+  <meta name="twitter:url" content="https://yuxi1005.github.io/2025/02/24/Bert%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -191,13 +191,94 @@
 </div>
 
         <div class="trans">
-            <h2>yuxi的第一篇blog</h2>
+            <h2>Bert论文阅读</h2>
 
-  <p>phrased! and quite as true as any ob-servation in civilised life should be.阿尔杰农。这是完美的措辞！就像文明生活中的任何观察一样真实。 </p>
+  <h3 id="总体about-Bert"><a href="#总体about-Bert" class="headerlink" title="总体about Bert"></a>总体about Bert</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>BERT（<strong>Bidirectional Encoder Representations from Transformers</strong>）是谷歌于2018年提出的基于Transformer架构的预训练语言模型。它通过双向上下文理解和大规模无监督预训练，显著提升了自然语言处理（NLP）任务的性能，成为NLP领域的里程碑式模型。</p>
 <span id="more"></span>
-<p>JACK. I am sick to death of clev-erness. Everybody is clever nowa-days. You can’t go anywhere withoutmeeting clever people.杰克我受够了自作聪明。现在每个人都很聪明啊。。。。你走到哪里都能遇到聪明人。 The thing has become an abso-lute public nuisance. I wish to good-ness we had a few fools left.这件事成了绝对的公害。我真希望还剩下几个傻瓜。 ALGERNON. We have.阿尔杰农。我们有。 JACK. I should extremely like tomeet them. What do they talk about?杰克我非常想见见他们。</p>
 
-  <p><a class="classtest-link" href="/tags/test/" rel="tag">test</a>, <a class="classtest-link" href="/tags/yuxi%E7%A2%8E%E7%A2%8E%E5%BF%B5/" rel="tag">yuxi碎碎念</a> — Feb 24, 2025</p>
+<h4 id="2-核心特点"><a href="#2-核心特点" class="headerlink" title="2. 核心特点"></a>2. <strong>核心特点</strong></h4><ul>
+<li><strong>双向上下文建模</strong>：<br>传统模型（如GPT）仅从左到右或从右到左单向处理文本，而BERT通过掩码机制同时利用左右两侧的上下文信息。</li>
+<li><strong>基于Transformer</strong>：<br>使用Transformer的编码器（Encoder）堆叠，并行计算能力强，擅长捕捉长距离依赖。</li>
+<li><strong>预训练+微调范式</strong>：<br>先在大规模语料上预训练通用语言表示，再针对下游任务微调，减少数据需求。</li>
+</ul>
+<hr>
+<h4 id="3-模型架构"><a href="#3-模型架构" class="headerlink" title="3. 模型架构"></a>3. <strong>模型架构</strong></h4><ul>
+<li><strong>基础版本</strong>：  <ul>
+<li><strong>BERT-Base</strong>：12层Transformer编码器，768维隐藏层，12个注意力头，1.1亿参数。</li>
+<li><strong>BERT-Large</strong>：24层，1024维隐藏层，16个注意力头，3.4亿参数。</li>
+</ul>
+</li>
+<li><strong>输入表示</strong>：  <ul>
+<li>输入由<code>[CLS]</code>（分类标记）、文本段、<code>[SEP]</code>（分隔符）组成。</li>
+<li>嵌入层 &#x3D; Token嵌入 + 段嵌入（区分句子） + 位置嵌入。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-预训练任务"><a href="#4-预训练任务" class="headerlink" title="4. 预训练任务"></a>4. <strong>预训练任务</strong></h4><p>BERT通过两个无监督任务学习语言表示：</p>
+<ol>
+<li><strong>掩码语言模型（MLM, Masked Language Model）</strong>  <ul>
+<li>随机遮盖输入中15%的Token（如替换为<code>[MASK]</code>），模型预测被遮盖的Token。</li>
+<li>允许模型同时利用双向上下文。</li>
+</ul>
+</li>
+<li><strong>下一句预测（NSP, Next Sentence Prediction）</strong>  <ul>
+<li>输入两个句子A和B，模型判断B是否为A的下一句。</li>
+<li>帮助模型理解句子间关系。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="5-微调（Fine-tuning）"><a href="#5-微调（Fine-tuning）" class="headerlink" title="5. 微调（Fine-tuning）"></a>5. <strong>微调（Fine-tuning）</strong></h4><ul>
+<li>在预训练模型基础上，针对下游任务添加任务特定层（如分类层），使用少量标注数据微调。</li>
+<li><strong>典型任务适配</strong>：  <ul>
+<li>单句分类（如情感分析）：使用<code>[CLS]</code>标记的输出作为特征。</li>
+<li>序列标注（如命名实体识别）：使用每个Token的输出。</li>
+<li>问答任务（如SQuAD）：预测答案的起止位置。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="6-应用场景"><a href="#6-应用场景" class="headerlink" title="6. 应用场景"></a>6. <strong>应用场景</strong></h4><ul>
+<li><strong>文本分类</strong>（情感分析、垃圾邮件检测）</li>
+<li><strong>命名实体识别（NER）</strong></li>
+<li><strong>问答系统</strong>（如阅读理解）</li>
+<li><strong>语义相似度计算</strong></li>
+<li><strong>机器翻译</strong>（作为辅助模型）</li>
+<li><strong>文本摘要生成</strong></li>
+</ul>
+<hr>
+<h4 id="7-优势与局限性"><a href="#7-优势与局限性" class="headerlink" title="7. 优势与局限性"></a>7. <strong>优势与局限性</strong></h4><ul>
+<li><strong>优势</strong>：  <ul>
+<li>双向上下文建模能力强。</li>
+<li>通用性强，适配多种任务。</li>
+<li>开源预训练模型（如Hugging Face的Transformers库）。</li>
+</ul>
+</li>
+<li><strong>局限性</strong>：  <ul>
+<li>预训练计算资源消耗大。</li>
+<li>最大输入长度限制（通常512个Token）。</li>
+<li>生成任务表现较弱（因仅含编码器）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="8-重要变体与改进"><a href="#8-重要变体与改进" class="headerlink" title="8. 重要变体与改进"></a>8. <strong>重要变体与改进</strong></h4><ul>
+<li><strong>RoBERTa</strong>：优化训练策略（更大批次、更多数据），移除NSP任务。</li>
+<li><strong>ALBERT</strong>：参数共享和嵌入分解，减少参数量。</li>
+<li><strong>DistilBERT</strong>：知识蒸馏压缩模型，保持性能的同时提升速度。</li>
+<li><strong>BERT-Multilingual</strong>：支持多语言任务。</li>
+<li><strong>领域适配版本</strong>：如BioBERT（生物医学）、SciBERT（科学文献）。</li>
+</ul>
+<hr>
+<h4 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. <strong>总结</strong></h4><p>BERT通过双向Transformer和预训练任务革新了NLP任务的表现，成为后续模型（如GPT、T5）的重要基础。尽管存在计算成本高、生成长文本能力有限等不足，其核心思想仍深刻影响了NLP领域的发展方向。随着轻量化、领域适配等改进，BERT及其变体在工业界和学术界持续发挥重要作用。</p>
+<h3 id="Bert笔记"><a href="#Bert笔记" class="headerlink" title="Bert笔记"></a>Bert笔记</h3><h4 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h4><h5 id="掩码语言模型"><a href="#掩码语言模型" class="headerlink" title="掩码语言模型"></a>掩码语言模型</h5><p>对15%进行Mask操作[像完形填空]</p>
+<p>8（mask）-1（random）-1（remain）</p>
+<h5 id="NSP下一句预测"><a href="#NSP下一句预测" class="headerlink" title="NSP下一句预测"></a>NSP下一句预测</h5><p>用于问答；开头可以放CLS用于文本分类。</p>
+<h4 id="微调"><a href="#微调" class="headerlink" title="微调"></a>微调</h4><p>在预训练基础上，加全连接、softmax等微调</p>
+<p><code>from transformers import BerTokenlizer, BertModel</code></p>
+
+  <p><a class="classtest-link" href="/tags/transformer/" rel="tag">transformer</a>, <a class="classtest-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a> — Feb 24, 2025</p>
   
 
 
