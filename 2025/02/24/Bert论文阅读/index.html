@@ -1,22 +1,365 @@
-<!doctype html>
-<html lang=en>
+<!DOCTYPE html>
+<html lang="en">
 
+<!-- Head tag -->
 <head>
-    <meta charset=UTF-8>
-    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
-    <meta http-equiv=X-UA-Compatible content="ie=edge">
-    <link rel="shortcut icon" href=/images/avater.ico>
-    <title>
-        yuxi
-    </title>
-    <link href=/static/css/app.c64eadfc8d3abfc9d85514dba4054813.css rel=stylesheet>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="我的小窝"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Yuxi"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Bert论文阅读"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="我的小窝"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="yuxi"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://yuxi1005.github.ioimg/ocean.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://yuxi1005.github.ioimg/ocean.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Bert论文阅读 - yuxi</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-    <div id=app></div>
-    <script type=text/javascript src=/static/js/manifest.992b63bf2abbf3194771.js></script>
-    <script type=text/javascript src=/static/js/vendor.e12dc8c9af1f7aa12436.js></script>
-    <script type=text/javascript src=/static/js/app.bc036f9167871d39aecf.js></script>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/ocean.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Bert论文阅读</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2025-02-24
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/读论文/">#读论文</a> <a href="/tags/transformer/">#transformer</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/笔记/">笔记</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 id="总体about-Bert"><a href="#总体about-Bert" class="headerlink" title="总体about Bert"></a>总体about Bert</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>BERT（<strong>Bidirectional Encoder Representations from Transformers</strong>）是谷歌于2018年提出的基于Transformer架构的预训练语言模型。它通过双向上下文理解和大规模无监督预训练，显著提升了自然语言处理（NLP）任务的性能，成为NLP领域的里程碑式模型。</p>
+<span id="more"></span>
+
+<h4 id="2-核心特点"><a href="#2-核心特点" class="headerlink" title="2. 核心特点"></a>2. <strong>核心特点</strong></h4><ul>
+<li><strong>双向上下文建模</strong>：<br>传统模型（如GPT）仅从左到右或从右到左单向处理文本，而BERT通过掩码机制同时利用左右两侧的上下文信息。</li>
+<li><strong>基于Transformer</strong>：<br>使用Transformer的编码器（Encoder）堆叠，并行计算能力强，擅长捕捉长距离依赖。</li>
+<li><strong>预训练+微调范式</strong>：<br>先在大规模语料上预训练通用语言表示，再针对下游任务微调，减少数据需求。</li>
+</ul>
+<hr>
+<h4 id="3-模型架构"><a href="#3-模型架构" class="headerlink" title="3. 模型架构"></a>3. <strong>模型架构</strong></h4><ul>
+<li><strong>基础版本</strong>：  <ul>
+<li><strong>BERT-Base</strong>：12层Transformer编码器，768维隐藏层，12个注意力头，1.1亿参数。</li>
+<li><strong>BERT-Large</strong>：24层，1024维隐藏层，16个注意力头，3.4亿参数。</li>
+</ul>
+</li>
+<li><strong>输入表示</strong>：  <ul>
+<li>输入由<code>[CLS]</code>（分类标记）、文本段、<code>[SEP]</code>（分隔符）组成。</li>
+<li>嵌入层 &#x3D; Token嵌入 + 段嵌入（区分句子） + 位置嵌入。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-预训练任务"><a href="#4-预训练任务" class="headerlink" title="4. 预训练任务"></a>4. <strong>预训练任务</strong></h4><p>BERT通过两个无监督任务学习语言表示：</p>
+<ol>
+<li><strong>掩码语言模型（MLM, Masked Language Model）</strong>  <ul>
+<li>随机遮盖输入中15%的Token（如替换为<code>[MASK]</code>），模型预测被遮盖的Token。</li>
+<li>允许模型同时利用双向上下文。</li>
+</ul>
+</li>
+<li><strong>下一句预测（NSP, Next Sentence Prediction）</strong>  <ul>
+<li>输入两个句子A和B，模型判断B是否为A的下一句。</li>
+<li>帮助模型理解句子间关系。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="5-微调（Fine-tuning）"><a href="#5-微调（Fine-tuning）" class="headerlink" title="5. 微调（Fine-tuning）"></a>5. <strong>微调（Fine-tuning）</strong></h4><ul>
+<li>在预训练模型基础上，针对下游任务添加任务特定层（如分类层），使用少量标注数据微调。</li>
+<li><strong>典型任务适配</strong>：  <ul>
+<li>单句分类（如情感分析）：使用<code>[CLS]</code>标记的输出作为特征。</li>
+<li>序列标注（如命名实体识别）：使用每个Token的输出。</li>
+<li>问答任务（如SQuAD）：预测答案的起止位置。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="6-应用场景"><a href="#6-应用场景" class="headerlink" title="6. 应用场景"></a>6. <strong>应用场景</strong></h4><ul>
+<li><strong>文本分类</strong>（情感分析、垃圾邮件检测）</li>
+<li><strong>命名实体识别（NER）</strong></li>
+<li><strong>问答系统</strong>（如阅读理解）</li>
+<li><strong>语义相似度计算</strong></li>
+<li><strong>机器翻译</strong>（作为辅助模型）</li>
+<li><strong>文本摘要生成</strong></li>
+</ul>
+<hr>
+<h4 id="7-优势与局限性"><a href="#7-优势与局限性" class="headerlink" title="7. 优势与局限性"></a>7. <strong>优势与局限性</strong></h4><ul>
+<li><strong>优势</strong>：  <ul>
+<li>双向上下文建模能力强。</li>
+<li>通用性强，适配多种任务。</li>
+<li>开源预训练模型（如Hugging Face的Transformers库）。</li>
+</ul>
+</li>
+<li><strong>局限性</strong>：  <ul>
+<li>预训练计算资源消耗大。</li>
+<li>最大输入长度限制（通常512个Token）。</li>
+<li>生成任务表现较弱（因仅含编码器）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="8-重要变体与改进"><a href="#8-重要变体与改进" class="headerlink" title="8. 重要变体与改进"></a>8. <strong>重要变体与改进</strong></h4><ul>
+<li><strong>RoBERTa</strong>：优化训练策略（更大批次、更多数据），移除NSP任务。</li>
+<li><strong>ALBERT</strong>：参数共享和嵌入分解，减少参数量。</li>
+<li><strong>DistilBERT</strong>：知识蒸馏压缩模型，保持性能的同时提升速度。</li>
+<li><strong>BERT-Multilingual</strong>：支持多语言任务。</li>
+<li><strong>领域适配版本</strong>：如BioBERT（生物医学）、SciBERT（科学文献）。</li>
+</ul>
+<hr>
+<h4 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. <strong>总结</strong></h4><p>BERT通过双向Transformer和预训练任务革新了NLP任务的表现，成为后续模型（如GPT、T5）的重要基础。尽管存在计算成本高、生成长文本能力有限等不足，其核心思想仍深刻影响了NLP领域的发展方向。随着轻量化、领域适配等改进，BERT及其变体在工业界和学术界持续发挥重要作用。</p>
+<h3 id="Bert笔记"><a href="#Bert笔记" class="headerlink" title="Bert笔记"></a>Bert笔记</h3><h4 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h4><h5 id="掩码语言模型"><a href="#掩码语言模型" class="headerlink" title="掩码语言模型"></a>掩码语言模型</h5><p>对15%进行Mask操作[像完形填空]</p>
+<p>8（mask）-1（random）-1（remain）</p>
+<h5 id="NSP下一句预测"><a href="#NSP下一句预测" class="headerlink" title="NSP下一句预测"></a>NSP下一句预测</h5><p>用于问答；开头可以放CLS用于文本分类。</p>
+<h4 id="微调"><a href="#微调" class="headerlink" title="微调"></a>微调</h4><p>在预训练基础上，加全连接、softmax等微调</p>
+<p><code>from transformers import BerTokenlizer, BertModel</code></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2025 Yuxi<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
 </body>
 
 </html>
