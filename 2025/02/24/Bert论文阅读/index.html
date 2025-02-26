@@ -194,7 +194,7 @@
                         
 
 
-<a href="/tags/读论文/">#读论文</a> <a href="/tags/transformer/">#transformer</a>
+<a href="/tags/transformer/">#transformer</a> <a href="/tags/读论文/">#读论文</a>
 
 
                     
@@ -223,13 +223,24 @@
 <li><strong>预训练+微调范式</strong>：<br>先在大规模语料上预训练通用语言表示，再针对下游任务微调，减少数据需求。</li>
 </ul>
 <hr>
+<ol>
+<li><p><strong>为什么需要BERT？</strong><br>传统模型（如RNN、LSTM）对文本的理解是单向的（从左到右或从右到左），无法同时利用上下文信息。例如，句子 <em>“银行利率上涨”</em> 和 <em>“河边银行”</em> 中的”银行”，传统模型难以通过双向上下文区分词义。</p>
+</li>
+<li><p><strong>突破性创新</strong><br>BERT首次实现<strong>双向上下文建模</strong>，通过预训练（Pre-training）学习通用的语言表示，再通过微调（Fine-tuning）适配下游任务（如分类、问答）。这种”预训练+微调”模式成为现代NLP的基础范式。</p>
+</li>
+</ol>
+<hr>
 <h4 id="3-模型架构"><a href="#3-模型架构" class="headerlink" title="3. 模型架构"></a>3. <strong>模型架构</strong></h4><ul>
-<li><strong>基础版本</strong>：  <ul>
+<li><p><strong>基础结构：Transformer编码器</strong><br>BERT基于Transformer的编码器（Encoder）堆叠而成，核心是<strong>自注意力机制（Self-Attention）</strong>，可并行计算并捕捉任意两个词之间的关系。例如：<code>句子：&quot;猫追老鼠，因为它饿了&quot;</code>自注意力机制能关联”它”与”猫”，而非”老鼠”。</p>
+</li>
+<li><p><strong>基础版本</strong>：  </p>
+<ul>
 <li><strong>BERT-Base</strong>：12层Transformer编码器，768维隐藏层，12个注意力头，1.1亿参数。</li>
 <li><strong>BERT-Large</strong>：24层，1024维隐藏层，16个注意力头，3.4亿参数。</li>
 </ul>
 </li>
-<li><strong>输入表示</strong>：  <ul>
+<li><p><strong>输入表示</strong>：  </p>
+<ul>
 <li>输入由<code>[CLS]</code>（分类标记）、文本段、<code>[SEP]</code>（分隔符）组成。</li>
 <li>嵌入层 &#x3D; Token嵌入 + 段嵌入（区分句子） + 位置嵌入。</li>
 </ul>
@@ -261,12 +272,35 @@
 </ul>
 <hr>
 <h4 id="6-应用场景"><a href="#6-应用场景" class="headerlink" title="6. 应用场景"></a>6. <strong>应用场景</strong></h4><ul>
-<li><strong>文本分类</strong>（情感分析、垃圾邮件检测）</li>
-<li><strong>命名实体识别（NER）</strong></li>
-<li><strong>问答系统</strong>（如阅读理解）</li>
-<li><strong>语义相似度计算</strong></li>
-<li><strong>机器翻译</strong>（作为辅助模型）</li>
-<li><strong>文本摘要生成</strong></li>
+<li><p><strong>文本分类</strong>  </p>
+<ul>
+<li>情感分析（判断评论是正面&#x2F;负面）  </li>
+<li>垃圾邮件检测</li>
+</ul>
+</li>
+<li><p><strong>问答系统</strong>  </p>
+<ul>
+<li><p>从文章中提取答案（如SQuAD数据集任务）  </p>
+</li>
+<li><p>示例：  </p>
+<pre><code class="highlight 1c">问题：<span class="string">&quot;阿尔伯特·爱因斯坦出生在哪里？&quot;</span>  
+文章片段：<span class="string">&quot;...爱因斯坦出生于德国乌尔姆...&quot;</span> → 答案：<span class="string">&quot;乌尔姆&quot;</span></code></pre></li>
+</ul>
+</li>
+<li><p><strong>命名实体识别（NER）</strong>  </p>
+<ul>
+<li><p>识别文本中的人名、地点、组织等实体  </p>
+</li>
+<li><p>示例：  </p>
+<pre><code class="highlight prolog">输入：<span class="string">&quot;马云是阿里巴巴创始人&quot;</span> → 输出：[<span class="string">&quot;马云&quot;</span>(人名), <span class="string">&quot;阿里巴巴&quot;</span>(组织)]</code></pre></li>
+</ul>
+</li>
+<li><p><strong>搜索与推荐</strong>  </p>
+<ul>
+<li>谷歌搜索使用BERT改进长尾查询的理解  </li>
+<li>电商平台用BERT分析用户评论优化推荐</li>
+</ul>
+</li>
 </ul>
 <hr>
 <h4 id="7-优势与局限性"><a href="#7-优势与局限性" class="headerlink" title="7. 优势与局限性"></a>7. <strong>优势与局限性</strong></h4><ul>
@@ -298,6 +332,12 @@
 <h5 id="NSP下一句预测"><a href="#NSP下一句预测" class="headerlink" title="NSP下一句预测"></a>NSP下一句预测</h5><p>用于问答；开头可以放CLS用于文本分类。</p>
 <h4 id="微调"><a href="#微调" class="headerlink" title="微调"></a>微调</h4><p>在预训练基础上，加全连接、softmax等微调</p>
 <p><code>from transformers import BerTokenlizer, BertModel</code></p>
+<p><strong>学习建议</strong>  </p>
+<ul>
+<li>入门：从Hugging Face的<code>transformers</code>库实践文本分类  </li>
+<li>深入：研究模型蒸馏（Distillation）技术压缩BERT体积  </li>
+<li>拓展：对比学习BERT与GPT（生成式模型）的差异</li>
+</ul>
 
 
                 
