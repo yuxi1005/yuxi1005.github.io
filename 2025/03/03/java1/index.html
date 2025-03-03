@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="博客维护记录"/>
+        <meta property="og:title" content="javabean命名规范"/>
     
 
     <!--Open Graph Description-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>博客维护记录 - yuxi</title>
+    <title>javabean命名规范 - yuxi</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -167,13 +167,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>博客维护记录</h1>
+                    <h1>javabean命名规范</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2025-02-25
+                            2025-03-03
                         
                     </span>
                 </div>
@@ -194,7 +194,7 @@
                         
 
 
-<a href="/tags/yuxi碎碎念/">#yuxi碎碎念</a> <a href="/tags/test/">#test</a>
+<a href="/tags/java/">#java</a> <a href="/tags/TWTStudio/">#TWTStudio</a>
 
 
                     
@@ -203,7 +203,7 @@
                     
                         
 
-<a href="/categories/随笔/">随笔</a>
+<a href="/categories/LS项目/">LS项目</a>
 
                     
                 </div>
@@ -214,20 +214,58 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>小窝的搭建过程。</p>
-<span id="more"></span>
-<p>2025.02.25</p>
-<p>博客网站的bug后面再修</p>
-<ul>
-<li>图片显示问题</li>
-<li>字体修改为微软雅黑</li>
-<li>代码块显示和高亮风格设置</li>
-<li>设置文章内部导航栏</li>
-<li>图片显示圆角阴影（进阶美化）</li>
-<li>让博客可以被搜到 </li>
-<li>修改文章icon</li>
-<li>categories</li>
+                <h1 id="Java-Bean的命名规范"><a href="#Java-Bean的命名规范" class="headerlink" title="Java Bean的命名规范"></a>Java Bean的命名规范</h1><p>Java Bean的命名规范是Java编程中用于创建符合Java Bean规范的组件时应当遵循的一套命名约定。以下是对Java Bean命名规范的详细归纳：</p>
+<h3 id="一、包命名规范"><a href="#一、包命名规范" class="headerlink" title="一、包命名规范"></a>一、包命名规范</h3><ul>
+<li><strong>全部字母小写</strong>：包名应使用小写字母，避免使用大写字母或特殊字符。例如，<code>com.example.demo</code>。</li>
 </ul>
+<h3 id="二、类命名规范"><a href="#二、类命名规范" class="headerlink" title="二、类命名规范"></a>二、类命名规范</h3><ul>
+<li><strong>首字母大写</strong>：类名应以大写字母开头，后续单词的首字母也应大写，采用驼峰命名法。例如，<code>NoteController</code>。</li>
+<li><strong>公共类</strong>：Java Bean类必须是公共类（<code>public class</code>）。</li>
+</ul>
+<h3 id="三、属性命名规范"><a href="#三、属性命名规范" class="headerlink" title="三、属性命名规范"></a>三、属性命名规范</h3><ul>
+<li><strong>首字母小写</strong>：属性名应以小写字母开头，后续单词的首字母大写，采用驼峰命名法。例如，<code>courseId</code>、<code>studentName</code>。</li>
+<li><strong>私有属性</strong>：Java Bean的属性应为私有（<code>private</code>），通过公共的getter和setter方法进行访问。</li>
+</ul>
+<h3 id="四、方法命名规范"><a href="#四、方法命名规范" class="headerlink" title="四、方法命名规范"></a>四、方法命名规范</h3><ul>
+<li>getter和setter方法：<ul>
+<li><strong>getter方法</strong>：用于获取属性的值，命名格式为<code>getXxx()</code>，其中<code>Xxx</code>是属性名，首字母大写。对于布尔类型的属性，可以使用<code>isXxx()</code>代替<code>getXxx()</code>。例如，<code>getCourseId()</code>、<code>isAvailable()</code>。</li>
+<li><strong>setter方法</strong>：用于设置属性的值，命名格式为<code>setXxx(Xxx value)</code>，其中<code>Xxx</code>是属性名，首字母大写。例如，<code>setCourseId(Long courseId)</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="五、其他命名规范"><a href="#五、其他命名规范" class="headerlink" title="五、其他命名规范"></a>五、其他命名规范</h3><ul>
+<li><strong>文件名</strong>：Java Bean的源文件名称应与类名一致，包括大小写。例如，<code>NoteController.java</code>。</li>
+<li><strong>常量命名</strong>：常量名应全部使用大写字母，单词之间用下划线分隔。例如，<code>MAX_CONNECTIONS</code>。</li>
+<li><strong>有意义</strong>：命名应具有描述性，能够清晰地表达其含义，避免使用单个字母或数字作为名称。</li>
+<li><strong>避免特殊字符</strong>：名称中不应包含空格、点、逗号等特殊字符。</li>
+<li><strong>避免关键字</strong>：名称不应与Java的关键字或保留字相同。</li>
+</ul>
+<h3 id="六、示例"><a href="#六、示例" class="headerlink" title="六、示例"></a>六、示例</h3><p>假设有一个表示课程的Java Bean，其命名规范如下：</p>
+<pre><code class="highlight java"><span class="keyword">package</span> com.example.demo.model;
+ 
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Course</span> &#123;
+    <span class="keyword">private</span> Long courseId;
+    <span class="keyword">private</span> String courseName;
+ 
+    <span class="keyword">public</span> Long <span class="title function_">getCourseId</span><span class="params">()</span> &#123;
+        <span class="keyword">return</span> courseId;
+    &#125;
+ 
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCourseId</span><span class="params">(Long courseId)</span> &#123;
+        <span class="built_in">this</span>.courseId = courseId;
+    &#125;
+ 
+    <span class="keyword">public</span> String <span class="title function_">getCourseName</span><span class="params">()</span> &#123;
+        <span class="keyword">return</span> courseName;
+    &#125;
+ 
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCourseName</span><span class="params">(String courseName)</span> &#123;
+        <span class="built_in">this</span>.courseName = courseName;
+    &#125;
+&#125;</code></pre>
+
+<p>在这个示例中，<code>Course</code>类遵循了Java Bean的命名规范，包括包名、类名、属性名和方法名。</p>
+<h3 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h3><p>遵循Java Bean的命名规范有助于提高代码的可读性、可维护性和一致性。它使得代码更加清晰易懂，方便其他开发者理解和使用。因此，在开发Java应用程序时，应遵循这些命名规范来创建Java Bean组件。</p>
 
 
                 

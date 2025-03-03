@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="博客维护记录"/>
+        <meta property="og:title" content="sentence-bert复现"/>
     
 
     <!--Open Graph Description-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>博客维护记录 - yuxi</title>
+    <title>sentence-bert复现 - yuxi</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -167,13 +167,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>博客维护记录</h1>
+                    <h1>sentence-bert复现</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2025-02-25
+                            2025-02-27
                         
                     </span>
                 </div>
@@ -194,17 +194,12 @@
                         
 
 
-<a href="/tags/yuxi碎碎念/">#yuxi碎碎念</a> <a href="/tags/test/">#test</a>
+<a href="/tags/读论文/">#读论文</a> <a href="/tags/复现/">#复现</a>
 
 
                     
                 </div>
                 <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/随笔/">随笔</a>
-
                     
                 </div>
             
@@ -214,20 +209,42 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>小窝的搭建过程。</p>
-<span id="more"></span>
-<p>2025.02.25</p>
-<p>博客网站的bug后面再修</p>
+                <h1 id="全面介绍-SBERT（Sentence-BERT）"><a href="#全面介绍-SBERT（Sentence-BERT）" class="headerlink" title="全面介绍 SBERT（Sentence-BERT）"></a>全面介绍 SBERT（Sentence-BERT）</h1><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>SBERT（Sentence-BERT）是基于BERT（Bidirectional Encoder Representations from Transformers）的改进模型，专门用于生成句子的嵌入表示（sentence embeddings）。与BERT不同，SBERT通过微调BERT模型，使其能够直接生成高质量的句子级嵌入，适用于各种自然语言处理（NLP）任务，如文本相似度计算、聚类、信息检索等。</p>
+<h4 id="2-背景"><a href="#2-背景" class="headerlink" title="2. 背景"></a>2. 背景</h4><p>BERT在NLP领域取得了巨大成功，但其主要设计用于处理词级别的任务。对于句子级别的任务，BERT通常需要对整个句子对进行编码，这在大规模数据集上效率较低。SBERT通过引入孪生网络（Siamese Network）和三重态网络（Triplet Network）结构，解决了这一问题，使得句子嵌入的计算更加高效。</p>
+<h4 id="3-模型结构"><a href="#3-模型结构" class="headerlink" title="3. 模型结构"></a>3. 模型结构</h4><p>SBERT通过在BERT的基础上引入Siamese网络（孪生网络）和池化层（Pooling Layer），解决了大规模相似性搜索的计算瓶颈。其关键特点包括：</p>
+<ol>
+<li><strong>Siamese网络</strong>：SBERT使用两个结构相同、参数共享的神经网络（即孪生网络）来处理输入的两个句子。这两个网络分别生成两个句子的嵌入向量，然后通过计算这两个向量的相似度来判断句子之间的关系。</li>
+<li><strong>池化层</strong>：为了降低计算复杂度，SBERT引入了池化层来将BERT的输出从高维度简化为低维度。例如，将BERT输出的512×768维的向量简化为1×768维的向量。</li>
+<li><strong>汇聚方法</strong>：在生成句子嵌入时，SBERT可以采用平均汇聚或最大汇聚等方法来汇聚BERT中所有标记（Token）的特征，从而得到整个句子的特征表示。</li>
+</ol>
+<h4 id="4-训练方法"><a href="#4-训练方法" class="headerlink" title="4. 训练方法"></a>4. 训练方法</h4><p>SBERT通过以下几种方式进行训练：</p>
 <ul>
-<li>图片显示问题</li>
-<li>字体修改为微软雅黑</li>
-<li>代码块显示和高亮风格设置</li>
-<li>设置文章内部导航栏</li>
-<li>图片显示圆角阴影（进阶美化）</li>
-<li>让博客可以被搜到 </li>
-<li>修改文章icon</li>
-<li>categories</li>
+<li><strong>分类任务</strong>：将句子对输入模型，通过全连接层进行分类。</li>
+<li><strong>回归任务</strong>：直接优化句子嵌入之间的相似度，使其与人工标注的相似度分数一致。</li>
+<li><strong>三重态损失</strong>：通过三重态损失函数，使得正样本对之间的距离小于负样本对之间的距离。</li>
 </ul>
+<h4 id="5-应用场景"><a href="#5-应用场景" class="headerlink" title="5. 应用场景"></a>5. 应用场景</h4><p>SBERT在多个NLP任务中表现出色，主要应用包括：</p>
+<ul>
+<li><strong>文本相似度计算</strong>：计算两个句子之间的语义相似度。</li>
+<li><strong>聚类</strong>：将相似的句子聚类在一起。</li>
+<li><strong>信息检索</strong>：在大规模文本数据中检索相关句子。</li>
+<li><strong>文本分类</strong>：利用句子嵌入进行分类任务。</li>
+<li><strong>问答系统</strong>：匹配问题和答案的语义相似度。</li>
+</ul>
+<h4 id="6-优点"><a href="#6-优点" class="headerlink" title="6. 优点"></a>6. 优点</h4><ul>
+<li><strong>高效性</strong>：相比BERT，SBERT在句子级别任务上更加高效。</li>
+<li><strong>通用性</strong>：生成的句子嵌入可以用于多种下游任务。</li>
+<li><strong>准确性</strong>：在多个基准数据集上取得了优异的性能。</li>
+</ul>
+<h4 id="7-缺点"><a href="#7-缺点" class="headerlink" title="7. 缺点"></a>7. 缺点</h4><ul>
+<li><strong>依赖预训练模型</strong>：SBERT的性能依赖于预训练的BERT模型。</li>
+<li><strong>计算资源</strong>：虽然比BERT高效，但在大规模数据集上仍需要大量计算资源。</li>
+</ul>
+<h4 id="8-相关资源"><a href="#8-相关资源" class="headerlink" title="8. 相关资源"></a>8. 相关资源</h4><ul>
+<li><strong>论文</strong>：Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.10084">https://arxiv.org/abs/1908.10084</a>)</li>
+<li><strong>代码库</strong>：<a target="_blank" rel="noopener" href="https://github.com/UKPLab/sentence-transformers">https://github.com/UKPLab/sentence-transformers</a></li>
+</ul>
+<h4 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. 总结</h4><p>SBERT通过改进BERT模型，使其在句子级别任务上更加高效和准确。它在多个NLP任务中表现出色，成为处理句子嵌入的重要工具。随着NLP领域的不断发展，SBERT及其变体将继续在各种应用中发挥重要作用。</p>
 
 
                 
