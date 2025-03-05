@@ -194,7 +194,7 @@
                         
 
 
-<a href="/tags/transformer/">#transformer</a> <a href="/tags/读论文/">#读论文</a>
+<a href="/tags/读论文/">#读论文</a> <a href="/tags/transformer/">#transformer</a>
 
 
                     
@@ -216,8 +216,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="BERT-flow"><a href="#BERT-flow" class="headerlink" title="BERT-flow"></a>BERT-flow</h1><p>BERT-flow 是一种针对 BERT 句子嵌入表示进行优化的方法，旨在解决 BERT 生成的句子向量在语义相似度任务中表现不佳的问题。以下是其核心内容的详细介绍：</p>
 <h2 id="背景与动机"><a href="#背景与动机" class="headerlink" title="背景与动机"></a><strong>背景与动机</strong></h2><h3 id="1-BERT-句子嵌入的缺陷"><a href="#1-BERT-句子嵌入的缺陷" class="headerlink" title="1.BERT 句子嵌入的缺陷"></a><strong>1.BERT 句子嵌入的缺陷</strong></h3><p>BERT 虽然在下游任务（如分类、问答）中表现优异，但其直接生成的句子向量（如 <code>[CLS]</code> 或平均池化后的向量）存在以下问题：</p>
-<ul>
-<li><p><strong>各向异性（Anisotropy）</strong>：向量在空间中分布不均匀，集中在某些狭窄的锥形区域，导致相似句子的向量可能距离较远。高频词和低频词在空间上的分布不均匀，高频词分布较密集且整体上更靠近原点，低频词分布较稀疏且整体分布离原点相对较远。因为低频词的词向量分布较稀疏，因此它们周围存在较多的 “空洞”，所谓的“空洞” 即几乎<strong>不能表征语义</strong>或者说在进行语义表征时，该部分空间没有被使用到是<strong>语义不明确的</strong>（poorly definded）。这样的分布性质会导致上下文语义信息被词频信息误导。</p>
+<h4 id="各向异性-Anisotropy："><a href="#各向异性-Anisotropy：" class="headerlink" title="各向异性-Anisotropy："></a><strong>各向异性-Anisotropy</strong>：</h4><p>向量在空间中分布不均匀，集中在某些狭窄的锥形区域，导致相似句子的向量可能距离较远。高频词和低频词在空间上的分布不均匀，高频词分布较密集且整体上更靠近原点，低频词分布较稀疏且整体分布离原点相对较远。因为低频词的词向量分布较稀疏，因此它们周围存在较多的 “空洞”，所谓的“空洞” 即几乎<strong>不能表征语义</strong>或者说在进行语义表征时，该部分空间没有被使用到是<strong>语义不明确的</strong>（poorly defined）。这样的分布性质会导致上下文语义信息被词频信息误导。</p>
 <blockquote>
 <p>用生活中的比喻理解「句子向量的各向异性」。<br>假设所有句子向量分布在一个高维空间中：</p>
 <p>各向同性（理想状态）：像一个均匀膨胀的气球，各个方向的“密度”相同。无论从哪个方向切开，气球内部的气体分布都是均匀的。此时，<strong>语义相近的句子向量会自然地分散在整个空间中</strong>，而不是挤在一起。</p>
@@ -226,9 +225,8 @@
 <p><strong>空间浪费</strong>：某些方向几乎没有向量，导致语义空间未被充分利用。</p>
 </blockquote>
 <p><strong>在句子级：</strong>如果两个句子都是由高频词组成，那么它们存在共现词时，相似度可能会很高，而如果都是由低频词组成时，得到的相似度则可能会相对较低；<strong>在单词级：</strong>假设两个词在语义上是等价的，但是它们的词频差异导致了它们空间上的距离偏差，这时词向量的距离就不能很好的表征语义相关度。</p>
-</li>
-<li><p><strong>低语义相关性</strong>：向量间的余弦相似度与人类对语义相似度的判断不一致。</p>
-</li>
+<ul>
+<li><strong>低语义相关性</strong>：向量间的余弦相似度与人类对语义相似度的判断不一致。</li>
 </ul>
 <p><strong>问题的根源</strong><br>BERT 通过 MLM（掩码语言模型）训练，关注局部上下文而非全局句子语义，导致句子向量未显式对齐语义空间。</p>
 <h3 id="两个主要问题"><a href="#两个主要问题" class="headerlink" title="两个主要问题"></a>两个主要问题</h3><p>（1）为什么BERT诱导的句子嵌入在检索语义相似的句子时表现不佳？它们携带的语义信息太少，或者只是因为这些嵌入中的语义没有得到适当的利用？</p>
