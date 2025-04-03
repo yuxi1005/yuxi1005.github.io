@@ -1,289 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
-<head>
-
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <!--Description-->
-
-    
-
-    
-        <meta name="description" content="我的小窝"/>
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="Yuxi"/>
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="LSTM和CNN和RNN"/>
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="我的小窝"/>
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="yuxi"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article"/>
-    
-
-    <!--Page Cover-->
-    
-    
-        <meta property="og:image" content="https://yuxi1005.github.ioimg/ocean.jpg"/>
-    
-
-        <meta name="twitter:card" content="summary_large_image"/>
-
-    
-
-    
-        <meta name="twitter:image" content="https://yuxi1005.github.ioimg/ocean.jpg"/>
-    
-
-    <!-- Title -->
-    
-    <title>LSTM和CNN和RNN - yuxi</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
-
-    <!-- Google Analytics -->
-    
-
-
-    <!-- favicon -->
-    
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-
-<body>
-
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Configurable Title</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://github.com/klugjo/hexo-theme-clean-blog">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('/img/ocean.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>LSTM和CNN和RNN</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2025-02-24
-                        
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/tags/读论文/">#读论文</a> <a href="/tags/必备知识/">#必备知识</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/笔记/">笔记</a>
-
-                    
-                </div>
-            
-
-            <!-- Gallery -->
-            
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>本文简单介绍了CNN，RNN和LSTM相关内容。Transformer在序列任务中逐渐取代RNN（因并行计算优势），但RNN&#x2F;LSTM在资源受限场景仍有价值。</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>LSTM和CNN和RNN [ yuxi ]</title><link rel="stylesheet" href="/css/reset.css"><link rel="stylesheet" href="/css/includes/header.css"><link rel="stylesheet" href="/css/includes/footer.css"><link rel="stylesheet" href="/css/includes/locate-button.css"><link rel="stylesheet" href="/css/includes/pagination.css"><link rel="stylesheet" href="/css/last.css"><link rel="stylesheet" href="/font-awesome/css/all.min.css"><link rel="stylesheet" href="/css/includes/alert/alert.css"><link rel="stylesheet" href="/css/post.css"><link rel="stylesheet" href="/css/third-party/share.min.css"><link rel="stylesheet" href="/css/article/simple.css"><link rel="stylesheet" href="/css/includes/side-user.css"><link rel="stylesheet" href="/css/includes/toc.css"><link rel="stylesheet" href="/css/includes/copyright.css"><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><link rel="stylesheet" href="/css/last.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.min.js"></script><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>var isHome = false;
+var isCenter = false;
+var i18n = {
+    copy: {
+        success: "Copy successful!",
+        error: "Copy failed, please try again!"
+    }
+};
+</script><meta name="generator" content="Hexo 7.3.0"></head><body class="post"><!-- Mixins, used on or off of the page--><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"><div id="menu-outer"><div class="site-name"><a>Yuxi</a></div><div class="menu"><ul class="menu-icon"><li></li><li></li><li></li></ul><ul id="nav"><img class="menu-avatar" src="https://cdn.jsdelivr.net/gh/DyingDown/img-host-repo/202304301831010.jpeg"><div class="menu-items"><li class="item-name"><a class="name-a" href="/"><i class="fas fa-home"></i> Home</a></li><li class="item-name"><a class="name-a" href="/archives"><i class="fas fa-archive"></i> Archives</a></li></div></ul></div></div><div id="content-outer"><div id="content-inner"><div id="post-outer"><div id="mid-col"><div id="post"><div id="titles"><span class="ribbon"><span class="ri">ORIGIN</span></span><div id="first-line"><h1 class="title-center">LSTM和CNN和RNN</h1><div class="date"><span class="post-title-icons"><i class="fa fa-calendar"></i></span><time class="words" datetime="2025-02-24T14:53:46.748Z">2025-02-24</time></div></div><div id="post-information"><a class="category-post"><span class="post-title-icons"><i class="fa fa-book"></i></span><span class="words" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</span></a><a class="post-tag"><span class="post-title-icons"><i class="fa fa-tag"></i></span><span class="words" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/">读论文  </span><span class="words" href="/tags/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/">必备知识  </span></a></div></div><div id="post-content"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    CommonHTML: {
+        linebreaks: { automatic: true, width: "90% container" }
+    },
+    "HTML-CSS": { 
+        linebreaks: { automatic: true, width: "90% container" }
+    },
+    "SVG": { 
+        linebreaks: { automatic: true, width: "90% container" }
+    }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><p>本文简单介绍了CNN，RNN和LSTM相关内容。Transformer在序列任务中逐渐取代RNN（因并行计算优势），但RNN/LSTM在资源受限场景仍有价值。</p>
 <span id="more"></span>
-
-<h1 id="CNN和RNN"><a href="#CNN和RNN" class="headerlink" title="CNN和RNN"></a>CNN和RNN</h1><h2 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h2><p><strong>CNN</strong> ——人类的视觉总是会关注视线内特征最明显的点。</p>
+<h1 id="cnn和rnn">CNN和RNN</h1>
+<h2 id="二者对比">二者对比</h2>
+<p><strong>CNN</strong> ——人类的视觉总是会关注视线内特征最明显的点。</p>
 <ul>
-<li><strong>卷积神经网络：</strong>通常用于<strong>计算机视觉</strong>中，可以用来<strong>图像识别</strong>和<strong>图像分类</strong>。CNN 用于提取图像的空间特征，通过不断的卷积和池化操作实现特征提取和降维。</li>
+<li><strong>卷积神经网络：</strong>通常用于<strong>计算机视觉</strong>中，可以用来<strong>图像识别</strong>和<strong>图像分类</strong>。CNN
+用于提取图像的空间特征，通过不断的卷积和池化操作实现特征提取和降维。</li>
 </ul>
-<p><strong>RNN</strong> 的假设——事物的发展是按照时间序列展开的（前一刻发生的事物会对未来的事情的发展产生影响）。</p>
+<p><strong>RNN</strong>
+的假设——事物的发展是按照时间序列展开的（前一刻发生的事物会对未来的事情的发展产生影响）。</p>
 <ul>
-<li><strong>循环神经网络：</strong>通常用于<strong>自然语言处理</strong>和<strong>语音识别</strong>中，可以用来处理<strong>时间序列</strong>数据。RNN 的主要思想是把前面的信息传递到后面，这样网络就可以利用之前的信息做出预测，能够处理序列中每个时间步的数据</li>
+<li><strong>循环神经网络：</strong>通常用于<strong>自然语言处理</strong>和<strong>语音识别</strong>中，可以用来处理<strong>时间序列</strong>数据。RNN
+的主要思想是把前面的信息传递到后面，这样网络就可以利用之前的信息做出预测，能够处理序列中每个时间步的数据</li>
 </ul>
 <table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 41%" />
+<col style="width: 48%" />
+</colgroup>
 <thead>
 <tr>
-<th align="left"><strong>组件</strong></th>
-<th align="left"><strong>CNN</strong></th>
-<th align="left"><strong>RNN</strong></th>
+<th style="text-align: left;"><strong>组件</strong></th>
+<th style="text-align: left;"><strong>CNN</strong></th>
+<th style="text-align: left;"><strong>RNN</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">核心操作</td>
-<td align="left">卷积（空间局部连接 + 权值共享）</td>
-<td align="left">循环（时间步间连接 + 隐藏状态传递）</td>
+<tbody>
+<tr>
+<td style="text-align: left;">核心操作</td>
+<td style="text-align: left;">卷积（空间局部连接 + 权值共享）</td>
+<td style="text-align: left;">循环（时间步间连接 + 隐藏状态传递）</td>
 </tr>
 <tr>
-<td align="left">参数规模</td>
-<td align="left">与输入尺寸无关（权值共享减少参数）</td>
-<td align="left">参数量随隐藏层维度平方增长（易参数爆炸）</td>
+<td style="text-align: left;">参数规模</td>
+<td style="text-align: left;">与输入尺寸无关（权值共享减少参数）</td>
+<td
+style="text-align: left;">参数量随隐藏层维度平方增长（易参数爆炸）</td>
 </tr>
 <tr>
-<td align="left">输入输出</td>
-<td align="left">固定尺寸输入（如图像）</td>
-<td align="left">可变长度序列（如文本、时间序列）</td>
+<td style="text-align: left;">输入输出</td>
+<td style="text-align: left;">固定尺寸输入（如图像）</td>
+<td style="text-align: left;">可变长度序列（如文本、时间序列）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>CNN vs RNN的本质区别</strong></p>
 <table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 38%" />
+<col style="width: 45%" />
+</colgroup>
 <thead>
 <tr>
-<th align="left"><strong>维度</strong></th>
-<th align="left"><strong>CNN</strong></th>
-<th align="left"><strong>RNN</strong></th>
+<th style="text-align: left;"><strong>维度</strong></th>
+<th style="text-align: left;"><strong>CNN</strong></th>
+<th style="text-align: left;"><strong>RNN</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><strong>数据特性</strong></td>
-<td align="left">空间局部相关性（如图像像素）</td>
-<td align="left">时间&#x2F;顺序相关性（如句子中的词语）</td>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>数据特性</strong></td>
+<td style="text-align: left;">空间局部相关性（如图像像素）</td>
+<td style="text-align: left;">时间/顺序相关性（如句子中的词语）</td>
 </tr>
 <tr>
-<td align="left"><strong>信息流动</strong></td>
-<td align="left">前馈传播（无记忆）</td>
-<td align="left">循环传播（隐藏状态记忆历史信息）</td>
+<td style="text-align: left;"><strong>信息流动</strong></td>
+<td style="text-align: left;">前馈传播（无记忆）</td>
+<td style="text-align: left;">循环传播（隐藏状态记忆历史信息）</td>
 </tr>
 <tr>
-<td align="left"><strong>并行性</strong></td>
-<td align="left">高度并行（卷积核独立计算）</td>
-<td align="left">串行计算（依赖前一时刻结果）</td>
+<td style="text-align: left;"><strong>并行性</strong></td>
+<td style="text-align: left;">高度并行（卷积核独立计算）</td>
+<td style="text-align: left;">串行计算（依赖前一时刻结果）</td>
 </tr>
-</tbody></table>
-<h2 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><ul>
-<li>CNN，全称为 Convolutional Neural Network。它是深度学习中用于模式识别的一种神经网络模型，特别适用于处理图像数据。它通过模拟大脑神经元对图像的识别过程来进行训练。</li>
-<li>CNN 的结构包括卷积层（Convolutional Layer）、池化层（Pooling Layer）、全连接层（Fully Connected Layer）等。卷积层通过卷积核（kernel）对输入数据进行滑动卷积操作，提取局部特征。池化层则用于降低特征维度，保留主要特征。全连接层将卷积和池化后的特征进行整合，用于分类或其他输出。</li>
+</tbody>
+</table>
+<h2 id="cnn">CNN</h2>
+<h3 id="基本介绍">基本介绍</h3>
+<ul>
+<li>CNN，全称为 Convolutional Neural
+Network。它是深度学习中用于模式识别的一种神经网络模型，特别适用于处理图像数据。它通过模拟大脑神经元对图像的识别过程来进行训练。</li>
+<li>CNN 的结构包括卷积层（Convolutional Layer）、池化层（Pooling
+Layer）、全连接层（Fully Connected
+Layer）等。卷积层通过卷积核（kernel）对输入数据进行滑动卷积操作，提取局部特征。池化层则用于降低特征维度，保留主要特征。全连接层将卷积和池化后的特征进行整合，用于分类或其他输出。</li>
 </ul>
-<h3 id="CNN工作原理"><a href="#CNN工作原理" class="headerlink" title="CNN工作原理"></a><strong>CNN工作原理</strong></h3><ul>
-<li>输入一个图像数据时，卷积层中的卷积核在图像上逐个像素进行卷积运算，生成特征图（feature map）。例如，使用多个不同卷积核可以提取不同纹理、边缘等特征。</li>
+<h3 id="cnn工作原理"><strong>CNN工作原理</strong></h3>
+<ul>
+<li>输入一个图像数据时，卷积层中的卷积核在图像上逐个像素进行卷积运算，生成特征图（feature
+map）。例如，使用多个不同卷积核可以提取不同纹理、边缘等特征。</li>
 <li>池化层对特征图进行下采样操作，常用的池化方法有最大值池化、平均值池化等。</li>
 <li>多个卷积层和池化层的组合使用可以提取图像的深层特征。经过卷积和池化后的特征图会被展平并输入到全连接层，全连接层通过激活函数和权重调整，输出对应于图像分类的概率分布。</li>
 </ul>
-<h3 id="pytorch实现"><a href="#pytorch实现" class="headerlink" title="pytorch实现"></a>pytorch实现</h3><pre><code class="highlight python"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn
+<h3 id="pytorch实现">pytorch实现</h3>
+<pre><code class="highlight python"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn
 
 <span class="keyword">class</span> <span class="title class_">CNNModel</span>(nn.Module):
     <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):
@@ -297,20 +138,32 @@
         x = <span class="variable language_">self</span>.fc(x)
         <span class="keyword">return</span> x
 ```</code></pre>
-
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
-<li>图像分类是 CNN 最典型的应用场景，如识别图片中的动物、物体种类等。在交通标志识别、医学影像诊断等方面也有广泛应用，能够准确识别和分类图像中的关键目标。</li>
+<h3 id="应用场景">应用场景</h3>
+<ul>
+<li>图像分类是 CNN
+最典型的应用场景，如识别图片中的动物、物体种类等。在交通标志识别、医学影像诊断等方面也有广泛应用，能够准确识别和分类图像中的关键目标。</li>
 </ul>
-<hr>
-<h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><h3 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h3><ul>
-<li>RNN，全称为 Recurrent Neural Network。它是一种处理序列数据的神经网络，能够捕捉数据中的时间依赖关系。在处理语言、语音等序列数据时，能够理解上下文信息。</li>
-<li>RNN 的基本结构是一个包含循环的网络结构，在每个时间步，网络都会接收当前的输入以及上一个时间步的输出。这样循环连接使得网络具有 “记忆” 的能力，可以利用先前的信息来影响当前的输出。</li>
+<hr />
+<h2 id="rnn">RNN</h2>
+<h3 id="基本介绍-1">基本介绍</h3>
+<ul>
+<li>RNN，全称为 Recurrent Neural
+Network。它是一种处理序列数据的神经网络，能够捕捉数据中的时间依赖关系。在处理语言、语音等序列数据时，能够理解上下文信息。</li>
+<li>RNN
+的基本结构是一个包含循环的网络结构，在每个时间步，网络都会接收当前的输入以及上一个时间步的输出。这样循环连接使得网络具有
+“记忆” 的能力，可以利用先前的信息来影响当前的输出。</li>
 </ul>
-<h3 id="RNN工作原理"><a href="#RNN工作原理" class="headerlink" title="RNN工作原理"></a><strong>RNN工作原理</strong></h3><ul>
-<li>RNN 中的隐藏层在处理序列数据时，会将当前输入与隐藏状态结合。在每个时间步 t，输入为 xt，隐藏状态为 ht，输出为 yt。隐藏状态 ht 由当前输入 xt 和前一个隐藏状态 ht-1（即上一时间步的输出）共同决定。</li>
-<li>反向传播通过时间反向传播（BPTT）进行训练，但 RNN 容易出现梯度消失或梯度爆炸的问题，特别是在处理长序列数据时。这是因为当时间步过长时，梯度可能会在反向传播过程中变得非常小或非常大，使得网络难以训练。</li>
+<h3 id="rnn工作原理"><strong>RNN工作原理</strong></h3>
+<ul>
+<li>RNN
+中的隐藏层在处理序列数据时，会将当前输入与隐藏状态结合。在每个时间步
+t，输入为 xt，隐藏状态为 ht，输出为 yt。隐藏状态 ht 由当前输入 xt
+和前一个隐藏状态 ht-1（即上一时间步的输出）共同决定。</li>
+<li>反向传播通过时间反向传播（BPTT）进行训练，但 RNN
+容易出现梯度消失或梯度爆炸的问题，特别是在处理长序列数据时。这是因为当时间步过长时，梯度可能会在反向传播过程中变得非常小或非常大，使得网络难以训练。</li>
 </ul>
-<h3 id="pytorch实现-1"><a href="#pytorch实现-1" class="headerlink" title="pytorch实现"></a>pytorch实现</h3><pre><code class="highlight python"><span class="keyword">class</span> <span class="title class_">RNNModel</span>(nn.Module):
+<h3 id="pytorch实现-1">pytorch实现</h3>
+<pre><code class="highlight python"><span class="keyword">class</span> <span class="title class_">RNNModel</span>(nn.Module):
     <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_dim, hidden_dim, output_dim</span>):
         <span class="built_in">super</span>().__init__()
         <span class="variable language_">self</span>.rnn = nn.RNN(input_dim, hidden_dim, batch_first=<span class="literal">True</span>)
@@ -321,84 +174,47 @@
         out = <span class="variable language_">self</span>.fc(out[:, -<span class="number">1</span>, :])  <span class="comment"># 取最后一个时间步输出</span>
         <span class="keyword">return</span> out
 ```</code></pre>
-
-<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>文本生成是 RNN 的一个重要应用，能够根据前面的字或词来预测后面的字或词，从而生成连贯的文本。在语音识别中，RNN 可以处理语音信号，将其转化为文字。同时在自然语言处理中的情感分析、语言翻译等任务也广泛应用 RNN。</p>
-<h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>LSTM，全称为 Long Short-Term Memory。它旨在解决传统RNN的两大核心问题：</p>
+<h3 id="应用场景-1">应用场景</h3>
+<p>文本生成是 RNN
+的一个重要应用，能够根据前面的字或词来预测后面的字或词，从而生成连贯的文本。在语音识别中，RNN
+可以处理语音信号，将其转化为文字。同时在自然语言处理中的情感分析、语言翻译等任务也广泛应用
+RNN。</p>
+<h1 id="lstm">LSTM</h1>
+<h2 id="基本概念">基本概念</h2>
+<p>LSTM，全称为 Long Short-Term
+Memory。它旨在解决传统RNN的两大核心问题：</p>
 <ul>
-<li><strong>梯度消失&#x2F;爆炸</strong>：在长序列训练中，梯度可能指数级衰减或增长，导致模型无法学习长期依赖。</li>
+<li><strong>梯度消失/爆炸</strong>：在长序列训练中，梯度可能指数级衰减或增长，导致模型无法学习长期依赖。</li>
 <li><strong>短时记忆限制</strong>：传统RNN的隐藏状态难以长期保存信息，对长距离依赖建模能力弱。</li>
 </ul>
-<p>LSTM通过引入<strong>门控机制</strong>和<strong>细胞状态（Cell State）</strong>，实现了对信息的长期记忆和选择性遗忘。LSTM 的基本单元包括输入门、输出门、遗忘门以及细胞状态。输入门控制新信息是否进入细胞状态；输出门控制细胞状态中的信息是否输出；遗忘门则控制遗忘细胞状态中的旧信息。</p>
+<p>LSTM通过引入<strong>门控机制</strong>和<strong>细胞状态（Cell
+State）</strong>，实现了对信息的长期记忆和选择性遗忘。LSTM
+的基本单元包括输入门、输出门、遗忘门以及细胞状态。输入门控制新信息是否进入细胞状态；输出门控制细胞状态中的信息是否输出；遗忘门则控制遗忘细胞状态中的旧信息。</p>
 <p>yuxi：选择性遗忘是否可以改进？遗忘无效信息会更好。</p>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a><strong>工作原理</strong></h2><ul>
-<li>在每个时间步，LSTM 首先通过遗忘门确定要抛弃的细胞状态信息，这由 sigmoid 函数决定保留程度。然后输入门用于决定哪些新的信息会被添加到细胞状态中，同时通过 tanh 函数创建一个新的候选值向量。</li>
-<li>细胞状态的更新是通过将遗忘门的输出与当前细胞状态相乘，再将输入门和候选值向量的乘积与之相加。输出门决定了最终的输出值，它由 sigmoid 函数生成输出门的值，并与经过 tanh 激活的细胞状态相乘得到。</li>
+<h2 id="工作原理"><strong>工作原理</strong></h2>
+<ul>
+<li>在每个时间步，LSTM 首先通过遗忘门确定要抛弃的细胞状态信息，这由
+sigmoid
+函数决定保留程度。然后输入门用于决定哪些新的信息会被添加到细胞状态中，同时通过
+tanh 函数创建一个新的候选值向量。</li>
+<li>细胞状态的更新是通过将遗忘门的输出与当前细胞状态相乘，再将输入门和候选值向量的乘积与之相加。输出门决定了最终的输出值，它由
+sigmoid 函数生成输出门的值，并与经过 tanh 激活的细胞状态相乘得到。</li>
 </ul>
-<h2 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a><strong>应用领域</strong></h2><ul>
-<li>LSTM 在处理序列数据时表现出色，特别是在需要记忆较长时间依赖关系的情况下。它在机器翻译中可以记住源语言的语句结构，从而更准确地生成目标语言的翻译结果。此外，在时间序列预测（如股票预测）、情感分析、语音识别等领域，LSTM 的应用都可以有效提升性能。</li>
+<h2 id="应用领域"><strong>应用领域</strong></h2>
+<ul>
+<li>LSTM
+在处理序列数据时表现出色，特别是在需要记忆较长时间依赖关系的情况下。它在机器翻译中可以记住源语言的语句结构，从而更准确地生成目标语言的翻译结果。此外，在时间序列预测（如股票预测）、情感分析、语音识别等领域，LSTM
+的应用都可以有效提升性能。</li>
 </ul>
-
-
-                
-            </div>
-
-            <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
-
-
-                </div>
-            
-        </div>
-    </div>
-</article>
-
-    <!-- Footer -->
-    <hr />
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">&copy; 2025 Yuxi<br></p>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-    <!-- After footer scripts -->
-    
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
-
-
-
-</body>
-
-</html>
+</div></div><div id="sideButtons"><div id="back-to-top"><i class="fas fa-up"></i><span>TOP</span></div><div id="go-to-comment"><i class="fas fa-comment"></i><span>COMMENT</span></div></div></div></div></div></div><div id="bottom-outer"><div id="bottom-inner"><div id="incons"><a class="icon" href=" mailto:o_oyao@outlook.com " title="E-mail"><i class=" fas fa-fw fa-envelope"></i></a></div><div id="author"><a id="theme_name" target="_blank" rel="noopener" href="https://github.com/DyingDown/hexo-theme-last"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="900.000000pt" height="288.000000pt" viewBox="0 0 900.000000 288.000000" preserveAspectRatio="xMidYMid meet" id="last-icon">
+<g transform="translate(0.000000,288.000000) scale(0.100000,-0.100000)" stroke="none">
+<path class="blue a right" d="M3815 2435 c-45 -12 -134 -28 -220 -41 -16 -2 -64 -11 -105 -19 -41 -8 -96 -17 -122 -20 -45 -6 -48 -8 -48 -34 0 -16 13 -59 29 -97 16 -38 39 -94 51 -124 11 -30 25 -64 29 -75 5 -11 16 -40 26 -65 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 31 -73 8 -16 14 -33 14 -39 0 -5 6 -24 14 -41 20 -48 44 -110 51 -132 3 -11 12 -28 19 -38 13 -17 17 -17 60 -3 25 9 54 20 63 25 10 5 38 17 63 26 25 9 59 23 75 30 17 7 52 21 79 32 26 10 50 24 53 30 3 7 -2 39 -11 70 -10 32 -23 81 -30 108 -19 70 -41 151 -59 215 -9 30 -23 84 -32 120 -9 36 -23 89 -31 118 -8 28 -21 77 -29 107 -44 165 -64 239 -88 325 -9 30 -23 84 -32 120 -10 36 -19 71 -21 78 -4 14 -5 14 -69 -3z"/>
+<path class="yellow s left" d="M4247 2443 c-14 -4 -17 -11 -13 -28 3 -13 10 -270 16 -572 5 -301 13 -577 16 -611 4 -35 9 -240 13 -455 l6 -392 58 -3 c32 -2 108 4 170 12 61 9 135 16 164 16 29 0 99 6 155 14 57 8 148 17 203 21 112 6 157 15 163 33 2 6 -9 14 -25 18 -74 19 -217 134 -271 219 -74 117 -116 259 -110 375 l3 65 265 0 265 0 6 -60 c13 -119 78 -198 172 -210 142 -18 240 78 223 219 -6 57 -44 103 -111 137 -22 11 -47 24 -55 28 -17 10 -79 38 -125 57 -16 6 -48 20 -70 30 -22 9 -53 23 -70 30 -143 61 -252 131 -323 209 -28 31 -58 68 -66 83 -39 73 -54 114 -71 195 -17 83 -17 91 -1 175 10 48 24 101 31 117 8 17 16 37 19 45 6 16 28 52 36 60 3 3 21 25 39 48 43 55 38 59 -88 66 -53 4 -148 13 -211 21 -63 9 -140 15 -171 15 -30 0 -82 5 -115 10 -90 16 -107 17 -127 13z"/>
+<path class="pink t" d="M8655 2428 c-22 -5 -71 -15 -110 -23 -38 -7 -104 -20 -145 -29 -114 -23 -231 -45 -274 -51 -70 -11 -26 -20 127 -25 l152 -5 3 -179 c2 -121 -1 -183 -9 -192 -8 -10 -51 -14 -168 -16 l-156 -3 -3 -645 c-1 -354 -6 -648 -11 -653 -6 -6 -277 -11 -408 -7 -10 0 -13 141 -15 653 l-3 652 -160 3 c-112 2 -161 6 -167 15 -4 6 -8 60 -8 120 l0 107 -27 0 c-15 0 -52 -6 -82 -14 -72 -18 -164 -37 -221 -45 -54 -7 -59 -24 -37 -104 23 -81 38 -139 46 -182 5 -22 14 -62 21 -90 7 -27 18 -72 25 -100 7 -27 18 -70 25 -95 6 -25 15 -63 19 -85 4 -22 12 -56 18 -75 6 -19 17 -57 23 -85 7 -27 19 -77 26 -110 8 -33 18 -78 23 -100 4 -22 12 -56 18 -75 12 -36 30 -108 43 -170 12 -55 30 -131 45 -185 8 -27 17 -67 20 -87 3 -22 14 -42 25 -48 10 -6 65 -15 122 -20 57 -6 144 -16 193 -22 50 -6 135 -14 190 -18 120 -10 277 -26 440 -45 148 -19 219 -19 233 -2 6 7 16 62 21 122 11 108 21 197 43 345 5 41 14 113 18 160 5 47 13 123 20 170 6 47 18 139 26 205 8 66 19 154 25 195 6 41 15 113 19 160 8 87 20 178 46 356 7 56 14 119 14 140 0 22 6 71 14 111 7 40 11 75 8 78 -7 7 -38 5 -87 -7z"/>
+<path class="yellow l right" d="M1215 2334 c-63 -53 -115 -100 -115 -105 0 -5 39 -9 86 -9 139 0 124 70 124 -595 l0 -575 204 0 c112 0 211 -3 220 -6 12 -5 16 -21 16 -75 0 -81 7 -85 65 -31 23 20 92 82 155 137 169 146 155 132 139 151 -7 9 -18 24 -24 35 -11 19 -88 143 -117 188 -9 14 -23 36 -30 48 -47 80 -102 169 -108 173 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -37 60 -61 100 -24 40 -47 75 -51 78 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -37 60 -61 100 -24 40 -47 75 -51 78 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -43 70 -75 122 -32 53 -64 96 -72 96 -8 0 -66 -43 -130 -96z"/>
+<path class="blue a right" d="M2815 2255 c-51 -13 -144 -30 -246 -45 -31 -4 -79 -12 -105 -18 -84 -18 -166 -33 -239 -43 -101 -13 -101 -13 -87 -166 7 -71 12 -171 12 -223 1 -52 5 -142 10 -200 5 -58 14 -207 20 -333 5 -125 14 -267 20 -315 5 -48 10 -134 10 -192 1 -148 16 -320 29 -333 7 -7 20 -6 46 6 45 22 88 40 145 62 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 58 23 73 31 16 8 33 14 39 14 5 0 24 6 41 14 18 7 57 23 87 35 84 34 91 37 150 64 l55 26 -76 1 c-50 0 -80 5 -87 13 -6 7 -22 48 -37 92 -14 43 -31 83 -38 87 -6 4 -117 8 -245 8 l-232 0 -19 -42 c-42 -95 -51 -119 -51 -133 0 -23 -32 -26 -215 -23 -190 3 -193 5 -161 73 9 18 16 38 16 43 0 6 6 23 14 39 16 32 26 55 57 133 11 30 27 69 34 85 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 8 17 28 66 45 110 18 44 38 94 45 110 7 17 20 47 29 68 26 60 22 67 -31 66 -27 0 -70 -7 -98 -14z"/>
+<path class="yellow s right" d="M6180 2246 c0 -9 4 -24 9 -34 36 -69 69 -246 49 -269 -8 -11 -65 -13 -260 -11 l-250 3 -22 55 c-40 106 -72 130 -170 130 -114 0 -176 -57 -176 -164 0 -91 45 -123 400 -289 120 -55 168 -81 240 -128 62 -40 120 -95 165 -154 76 -101 95 -167 95 -330 0 -163 -21 -236 -100 -350 -49 -71 -49 -71 -110 -122 l-55 -46 65 7 c36 3 126 11 200 16 74 6 159 14 189 20 30 5 82 10 115 10 34 1 122 9 196 19 l135 17 -3 135 c-1 74 -9 224 -17 334 -22 303 -35 511 -45 715 -10 202 -27 371 -39 383 -4 4 -69 12 -145 17 -75 5 -140 11 -145 14 -4 3 -70 10 -147 15 -77 5 -147 13 -157 17 -12 4 -17 1 -17 -10z"/>
+<path class="yellow l left" d="M854 2034 c-16 -14 -60 -51 -99 -82 -38 -31 -86 -71 -105 -88 -19 -18 -60 -51 -90 -75 -51 -40 -88 -70 -114 -94 -6 -6 -36 -30 -66 -55 -30 -25 -60 -49 -66 -55 -6 -5 -42 -35 -79 -65 -37 -30 -82 -68 -99 -83 l-31 -28 120 -116 c66 -64 232 -224 370 -357 324 -313 474 -457 495 -476 9 -8 33 -30 53 -49 l36 -34 28 23 c24 19 62 52 194 171 14 13 52 46 83 73 32 27 54 52 49 57 -5 5 -146 10 -313 11 l-305 3 -3 673 c-2 732 1 698 -58 646z"/>
+<path class="blue a middle" d="M3142 1880 c-5 -14 -15 -43 -21 -65 -7 -22 -17 -53 -23 -70 -5 -16 -14 -46 -18 -65 -8 -33 -16 -59 -41 -132 -19 -55 -23 -108 -8 -108 97 -3 252 0 257 5 3 3 0 20 -7 38 -7 18 -16 48 -21 67 -4 19 -12 46 -17 60 -6 14 -18 52 -28 85 -9 33 -23 78 -31 100 -8 23 -14 50 -14 60 0 11 -4 27 -10 35 -7 12 -11 10 -18 -10z"/>
+</g>
+</svg></a><span> made with </span><span id="heart">❤️</span><span> by </span><a id="theme_author" target="_blank" rel="noopener" href="http://dyingdown.github.io">o_oyao</a><br><span>©Yuxi undefined-2025</span></div><br><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="visits" id="busuanzi_container_site_pv"><div class="visits"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span>  | <i class="fa fa-fw fa-eye"></i> <span id="busuanzi_value_page_pv"></spsan></div></span></div></div><script src="/js/third-party/tools.js"></script><script src="/js/third-party/local-search.js"></script><script src="/js/Message.js"></script><script src="/js/last.js"></script><script src="/js/third-party/social-share.js"></script><script src="/js/third-party/qrcode.js"></script><script src="/js/third-party/tools.js"></script><script src="/js/third-party/clipboard.js"></script><script src="/js/post.js" type="module"></script><script src="https://use.typekit.net/bkt6ydm.js"></script></body></html>
