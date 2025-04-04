@@ -6,7 +6,7 @@ var i18n = {
         error: "Copy failed, please try again!"
     }
 };
-</script><meta name="generator" content="Hexo 7.3.0"></head><body class="post"><!-- Mixins, used on or off of the page--><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"><div id="menu-outer"><div class="site-name"><a>Yuxi</a></div><div class="menu"><ul class="menu-icon"><li></li><li></li><li></li></ul><ul id="nav"><img class="menu-avatar" src="https://cdn.jsdelivr.net/gh/DyingDown/img-host-repo/202304301831010.jpeg"><div class="menu-items"><li class="item-name"><a class="name-a" href="/"><i class="fas fa-home"></i> Home</a></li><li class="item-name"><a class="name-a" href="/archives"><i class="fas fa-archive"></i> Archives</a></li></div></ul></div></div><div id="content-outer"><div id="content-inner"><div id="post-outer"><div id="mid-col"><div id="post"><div id="titles"><span class="ribbon"><span class="ri">ORIGIN</span></span><div id="first-line"><h1 class="title-center">关于Transformer</h1><div class="date"><span class="post-title-icons"><i class="fa fa-calendar"></i></span><time class="words" datetime="2025-02-24T07:29:32.182Z">2025-02-24</time></div></div><div id="post-information"><a class="category-post"><span class="post-title-icons"><i class="fa fa-book"></i></span><span class="words" href="/categories/%E7%AC%94/">笔</span></a><a class="post-tag"><span class="post-title-icons"><i class="fa fa-tag"></i></span><span class="words" href="/tags/transformer/">transformer  </span><span class="words" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/">读论文  </span></a></div></div><div id="post-content"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</script><meta name="generator" content="Hexo 7.3.0"></head><body class="post"><!-- Mixins, used on or off of the page--><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"><div id="menu-outer"><div class="site-name"><a>Yuxi</a></div><div class="menu"><ul class="menu-icon"><li></li><li></li><li></li></ul><ul id="nav"><img class="menu-avatar" src="https://cdn.jsdelivr.net/gh/DyingDown/img-host-repo/202304301831010.jpeg"><div class="menu-items"><li class="item-name"><a class="name-a" href="/"><i class="fas fa-home"></i> Home</a></li><li class="item-name"><a class="name-a" href="/archives"><i class="fas fa-archive"></i> Archives</a></li></div></ul></div></div><div id="content-outer"><div id="content-inner"><div id="post-outer"><div id="mid-col"><div id="post"><div id="titles"><span class="ribbon"><span class="ri">ORIGIN</span></span><div id="first-line"><h1 class="title-center">关于Transformer</h1><div class="date"><span class="post-title-icons"><i class="fa fa-calendar"></i></span><time class="words" datetime="2025-02-24T07:29:32.182Z">2025-02-24</time></div></div><div id="post-information"><a class="category-post"><span class="post-title-icons"><i class="fa fa-book"></i></span><span class="words" href="/categories/%E7%AC%94/">笔</span></a><a class="post-tag"><span class="post-title-icons"><i class="fa fa-tag"></i></span><span class="words" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/">读论文  </span><span class="words" href="/tags/transformer/">transformer  </span></a></div></div><div id="post-content"><script type="text/x-mathjax-config">MathJax.Hub.Config({
     tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
         processEscapes: true,
@@ -28,8 +28,9 @@ var i18n = {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><h2 id="总述">总述</h2>
-<h3 id="transformer-全面介绍">Transformer 全面介绍</h3>
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><h1 id="transformer-全面介绍">Transformer 全面介绍</h1>
+<p>了解transformer。变形金刚！</p>
+<span id="more"></span>
 <hr />
 <h4 id="一背景与意义">一、背景与意义</h4>
 <p>一个文本变换模型：序列到序列</p>
@@ -43,7 +44,7 @@ Need》中提出的深度学习模型架构。它通过<strong>自注意力机�
 </li>
 <li><strong>模型泛化</strong>：通过注意力机制动态学习不同位置的权重，适应多样化的上下文关系。</li>
 </ol>
-<span id="more"></span>
+<!--more-->
 <hr />
 <h4 id="二核心架构">二、核心架构</h4>
 <figure>
