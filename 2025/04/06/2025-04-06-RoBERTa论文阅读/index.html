@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>RoBERTa论文阅读 [ yuxi ]</title><link rel="stylesheet" href="/css/reset.css"><link rel="stylesheet" href="/css/includes/header.css"><link rel="stylesheet" href="/css/includes/footer.css"><link rel="stylesheet" href="/css/includes/locate-button.css"><link rel="stylesheet" href="/css/includes/pagination.css"><link rel="stylesheet" href="/css/last.css"><link rel="stylesheet" href="/font-awesome/css/all.min.css"><link rel="stylesheet" href="/css/includes/alert/alert.css"><link rel="stylesheet" href="/css/post.css"><link rel="stylesheet" href="/css/third-party/share.min.css"><link rel="stylesheet" href="/css/article/simple.css"><link rel="stylesheet" href="/css/includes/side-user.css"><link rel="stylesheet" href="/css/includes/toc.css"><link rel="stylesheet" href="/css/includes/copyright.css"><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><link rel="stylesheet" href="/css/last.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.min.js"></script><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>var isHome = false;
+var isCenter = false;
+var i18n = {
+    copy: {
+        success: "Copy successful!",
+        error: "Copy failed, please try again!"
+    }
+};
+</script><meta name="generator" content="Hexo 7.3.0"></head><body class="post"><!-- Mixins, used on or off of the page--><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"><div id="menu-outer"><div class="site-name"><a>Yuxi</a></div><div class="menu"><ul class="menu-icon"><li></li><li></li><li></li></ul><ul id="nav"><img class="menu-avatar" src="https://cdn.jsdelivr.net/gh/DyingDown/img-host-repo/202304301831010.jpeg"><div class="menu-items"><li class="item-name"><a class="name-a" href="/"><i class="fas fa-home"></i> Home</a></li><li class="item-name"><a class="name-a" href="/archives"><i class="fas fa-archive"></i> Archives</a></li></div></ul></div></div><div id="content-outer"><div id="content-inner"><div id="post-outer"><div id="mid-col"><div id="post"><div id="titles"><span class="ribbon"><span class="ri">ORIGIN</span></span><div id="first-line"><h1 class="title-center">RoBERTa论文阅读</h1><div class="date"><span class="post-title-icons"><i class="fa fa-calendar"></i></span><time class="words" datetime="2025-04-06T03:45:48.518Z">2025-04-06</time></div></div><div id="post-information"></div></div><div id="post-content"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    CommonHTML: {
+        linebreaks: { automatic: true, width: "90% container" }
+    },
+    "HTML-CSS": { 
+        linebreaks: { automatic: true, width: "90% container" }
+    },
+    "SVG": { 
+        linebreaks: { automatic: true, width: "90% container" }
+    }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><h1 id="roberta论文阅读">RoBERTa论文阅读</h1>
+<p>RoBERTa: A Robustly Optimized BERT Pretraining Approach
+<span id="more"></span></p>
+<h1
+id="论文阅读笔记roberta-a-robustly-optimized-bert-pretraining-approach">📘
+论文阅读笔记：《RoBERTa: A Robustly Optimized BERT Pretraining
+Approach》</h1>
+<blockquote>
+<p>📌 作者：Liu et al.<br />
+📅 发表时间：2019年<br />
+🔗 链接：<a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.11692">https://arxiv.org/abs/1907.11692</a></p>
+</blockquote>
+<hr />
+<h2 id="研究动机motivation">🧠 1. 研究动机（Motivation）</h2>
+<p>RoBERTa 并不试图提出新架构，而是对 <strong>BERT
+模型的预训练过程进行深入分析与优化</strong>，作者认为：</p>
+<blockquote>
+<p>🎯 “现有预训练模型的性能差异，往往来自训练细节而不是结构差异。”</p>
+</blockquote>
+<h3 id="目标">📌 目标：</h3>
+<ul>
+<li><p>复现并重新审视 BERT 的训练方式</p></li>
+<li><p>通过一系列修改和实验，探索哪些训练策略真正影响效果</p></li>
+<li><p>为预训练模型研究提供
+<strong>更加清晰、稳定的基准（benchmark）</strong></p></li>
+</ul>
+<hr />
+<h2 id="方法改进what-roberta-changes-from-bert">🔧 2. 方法改进（What
+RoBERTa Changes from BERT）</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 49%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr>
+<th>改动点</th>
+<th>RoBERTa 做法</th>
+<th>原始 BERT 做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mask策略</td>
+<td>每次 epoch 随机 mask（动态遮蔽）</td>
+<td>固定遮蔽版本（静态）</td>
+</tr>
+<tr>
+<td>输入句子拼接</td>
+<td>允许跨文档拼接（FULL / DOC SENTENCES）</td>
+<td>限制为句子对（segment A/B）</td>
+</tr>
+<tr>
+<td>NSP 任务</td>
+<td>❌ 移除 NSP（Next Sentence Prediction）</td>
+<td>✅ 使用 NSP</td>
+</tr>
+<tr>
+<td>Batch size</td>
+<td>更大（到8K）</td>
+<td>较小（256）</td>
+</tr>
+<tr>
+<td>数据量</td>
+<td>增加10倍（160GB）</td>
+<td>16GB（BookCorpus + Wiki）</td>
+</tr>
+<tr>
+<td>训练轮数</td>
+<td>提升（多轮 epoch）</td>
+<td>相对较少</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="核心实验与结果experiments-results">📊 3.
+核心实验与结果（Experiments &amp; Results）</h2>
+<ul>
+<li><p>✅ <strong>动态 Masking</strong> 更能提升性能</p></li>
+<li><p>✅ 移除 NSP 后效果 <strong>反而更好</strong></p></li>
+<li><p>✅ <strong>更长的训练</strong>、<strong>更大 batch</strong>
+显著提升表现</p></li>
+<li><p>✅ <strong>使用更多数据</strong>
+是效果最核心的提升源之一</p></li>
+<li><p>📈 RoBERTa 在 <strong>GLUE、SQuAD、RACE</strong>
+等多个任务上全面超越 BERT</p></li>
+</ul>
+<hr />
+<h2 id="related-work相关研究">📚 4. Related Work（相关研究）</h2>
+<h3 id="预训练方法分类">预训练方法分类：</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>代表工作</th>
+<th>简述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language Modeling</td>
+<td>GPT, ELMo</td>
+<td>从左到右预测下一个词</td>
+</tr>
+<tr>
+<td>Masked LM</td>
+<td>BERT, XLM</td>
+<td>遮蔽部分词让模型填空</td>
+</tr>
+<tr>
+<td>多任务预训练</td>
+<td>T5, MT-DNN</td>
+<td>多个任务联合训练提升泛化</td>
+</tr>
+<tr>
+<td>自回归变体</td>
+<td>XLNet</td>
+<td>换位置预测词，保留句子结构</td>
+</tr>
+<tr>
+<td>融合知识</td>
+<td>ERNIE, KnowBERT</td>
+<td>引入实体、知识图谱信息</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="我的思考personal-reflections">🧠 5. 我的思考（Personal
+Reflections）</h2>
+<h3 id="关于架构-vs-训练细节">✅ 关于“架构 vs 训练细节”：</h3>
+<p>这篇论文让我意识到：模型效果好，不一定是模型结构多创新，<strong>训练细节和资源控制才是最重要的变量</strong>。BERT
+和 RoBERTa 架构几乎一样，但性能差距明显，反映出 pretraining
+是一个“工程驱动”的过程。</p>
+<h3 id="关于-nsp-的价值">✅ 关于 NSP 的价值：</h3>
+<p>之前觉得 NSP 是 BERT 的创新点之一，但 RoBERTa
+直接去掉它，效果却更好，说明
+<strong>任务设计不一定越复杂越有效，反而可能引入噪声</strong>。</p>
+<h3 id="关于公平对比的重要性">✅ 关于公平对比的重要性：</h3>
+<p>RoBERTa 在 dev set 用 classification、test set 用 ranking，这是对
+GLUE
+榜单的适配。<strong>论文中明确说明这种切换方式，并给出解释，非常值得学习</strong>。它体现了作者对“公平比较”的重视。</p>
+<h3 id="关于资源限制下的训练策略">✅ 关于资源限制下的训练策略：</h3>
+<p>他们还对不同 batch size、学习率、warmup
+策略做了系统实验，这对我理解实际训练策略很有帮助。即使资源有限，也可以通过调整这些因素提升训练效率。</p>
+<hr />
+<h2 id="关键句子整理句子-中文解释">📌 6. 关键句子整理（句子 +
+中文解释）</h2>
+<ol type="1">
+<li><p><strong>“Outperforms all but one of the single model
+submissions.”</strong><br />
+➜ 超过所有单模型提交，除了一个。表示表现几乎最强。</p></li>
+<li><p><strong>“Only positive examples are usable in this formulation,
+excluding over half of the data.”</strong><br />
+➜ Ranking方法只能用带正例的样本，浪费了很多数据。</p></li>
+<li><p><strong>“We remove the NSP loss.”</strong><br />
+➜ 明确提出去掉 BERT 的下一句预测任务。</p></li>
+<li><p><strong>“We replicate, simplify, and better tune the training of
+BERT.”</strong><br />
+➜ 点出作者目标：不是改架构，而是优化训练过程。</p></li>
+</ol>
+<hr />
+<h2 id="收获与总结takeaways">📎 7. 收获与总结（Takeaways）</h2>
+<ul>
+<li><p>🧱
+架构只是地基，<strong>训练策略是高楼能建多高的关键</strong></p></li>
+<li><p>📚
+研究工作不仅要做出更好的模型，也要有<strong>可复现性</strong>和<strong>公平性</strong></p></li>
+<li><p>📈 有时<strong>删减复杂度</strong>（如去掉
+NSP）反而能提高效果</p></li>
+<li><p>🤖 RoBERTa 是 BERT
+方法论的“稳定升级版”，非常值得作为基线模型参考</p></li>
+</ul>
+<hr />
+<h3 id="margin-ranking-loss">Margin ranking loss</h3>
+<p>🆚 对比 Cross-Entropy Loss（交叉熵）：</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>Loss Type</th>
+<th>用于任务</th>
+<th>对模型的要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-Entropy</td>
+<td>分类 classification</td>
+<td>学会输出正确类别（yes/no）</td>
+</tr>
+<tr>
+<td>Margin Ranking Loss</td>
+<td>排序 ranking</td>
+<td>学会让正例排在负例前面（更高分）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="spacy">Spacy</h3>
+<p><strong>🚀 What can spaCy do?</strong></p>
+<p>Here are some of its main features:<br />
+（以下是 spaCy 的常用功能👇）</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 36%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr>
+<th>功能名称</th>
+<th>英文解释</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tokenization</td>
+<td>Split text into words or "tokens"</td>
+<td>分词（把句子拆成单词或符号）</td>
+</tr>
+<tr>
+<td>POS tagging</td>
+<td>Part-of-speech tagging</td>
+<td>词性标注（名词？动词？形容词？）</td>
+</tr>
+<tr>
+<td>Named Entity Recognition (NER)</td>
+<td>Detect names, dates, locations, etc.</td>
+<td>实体识别（识别人名、时间、地名等）</td>
+</tr>
+<tr>
+<td>Dependency parsing</td>
+<td>Analyze sentence structure</td>
+<td>依存句法分析（词之间的语法关系）</td>
+</tr>
+<tr>
+<td>Lemmatization</td>
+<td>Get base form of a word</td>
+<td>词形还原（例如 dogs → dog）</td>
+</tr>
+<tr>
+<td>Sentence segmentation</td>
+<td>Split text into sentences</td>
+<td>断句</td>
+</tr>
+<tr>
+<td>Noun chunk extraction</td>
+<td>Find noun phrases</td>
+<td>提取名词短语（像“the red car”）</td>
+</tr>
+<tr>
+<td>Text similarity</td>
+<td>Compare how similar two texts are</td>
+<td>文本相似度</td>
+</tr>
+</tbody>
+</table>
+</div></div><div id="sideButtons"><div id="back-to-top"><i class="fas fa-up"></i><span>TOP</span></div><div id="go-to-comment"><i class="fas fa-comment"></i><span>COMMENT</span></div></div></div></div></div></div><div id="bottom-outer"><div id="bottom-inner"><div id="incons"><a class="icon" href=" mailto:o_oyao@outlook.com " title="E-mail"><i class=" fas fa-fw fa-envelope"></i></a></div><div id="author"><a id="theme_name" target="_blank" rel="noopener" href="https://github.com/DyingDown/hexo-theme-last"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="900.000000pt" height="288.000000pt" viewBox="0 0 900.000000 288.000000" preserveAspectRatio="xMidYMid meet" id="last-icon">
+<g transform="translate(0.000000,288.000000) scale(0.100000,-0.100000)" stroke="none">
+<path class="blue a right" d="M3815 2435 c-45 -12 -134 -28 -220 -41 -16 -2 -64 -11 -105 -19 -41 -8 -96 -17 -122 -20 -45 -6 -48 -8 -48 -34 0 -16 13 -59 29 -97 16 -38 39 -94 51 -124 11 -30 25 -64 29 -75 5 -11 16 -40 26 -65 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 31 -73 8 -16 14 -33 14 -39 0 -5 6 -24 14 -41 20 -48 44 -110 51 -132 3 -11 12 -28 19 -38 13 -17 17 -17 60 -3 25 9 54 20 63 25 10 5 38 17 63 26 25 9 59 23 75 30 17 7 52 21 79 32 26 10 50 24 53 30 3 7 -2 39 -11 70 -10 32 -23 81 -30 108 -19 70 -41 151 -59 215 -9 30 -23 84 -32 120 -9 36 -23 89 -31 118 -8 28 -21 77 -29 107 -44 165 -64 239 -88 325 -9 30 -23 84 -32 120 -10 36 -19 71 -21 78 -4 14 -5 14 -69 -3z"/>
+<path class="yellow s left" d="M4247 2443 c-14 -4 -17 -11 -13 -28 3 -13 10 -270 16 -572 5 -301 13 -577 16 -611 4 -35 9 -240 13 -455 l6 -392 58 -3 c32 -2 108 4 170 12 61 9 135 16 164 16 29 0 99 6 155 14 57 8 148 17 203 21 112 6 157 15 163 33 2 6 -9 14 -25 18 -74 19 -217 134 -271 219 -74 117 -116 259 -110 375 l3 65 265 0 265 0 6 -60 c13 -119 78 -198 172 -210 142 -18 240 78 223 219 -6 57 -44 103 -111 137 -22 11 -47 24 -55 28 -17 10 -79 38 -125 57 -16 6 -48 20 -70 30 -22 9 -53 23 -70 30 -143 61 -252 131 -323 209 -28 31 -58 68 -66 83 -39 73 -54 114 -71 195 -17 83 -17 91 -1 175 10 48 24 101 31 117 8 17 16 37 19 45 6 16 28 52 36 60 3 3 21 25 39 48 43 55 38 59 -88 66 -53 4 -148 13 -211 21 -63 9 -140 15 -171 15 -30 0 -82 5 -115 10 -90 16 -107 17 -127 13z"/>
+<path class="pink t" d="M8655 2428 c-22 -5 -71 -15 -110 -23 -38 -7 -104 -20 -145 -29 -114 -23 -231 -45 -274 -51 -70 -11 -26 -20 127 -25 l152 -5 3 -179 c2 -121 -1 -183 -9 -192 -8 -10 -51 -14 -168 -16 l-156 -3 -3 -645 c-1 -354 -6 -648 -11 -653 -6 -6 -277 -11 -408 -7 -10 0 -13 141 -15 653 l-3 652 -160 3 c-112 2 -161 6 -167 15 -4 6 -8 60 -8 120 l0 107 -27 0 c-15 0 -52 -6 -82 -14 -72 -18 -164 -37 -221 -45 -54 -7 -59 -24 -37 -104 23 -81 38 -139 46 -182 5 -22 14 -62 21 -90 7 -27 18 -72 25 -100 7 -27 18 -70 25 -95 6 -25 15 -63 19 -85 4 -22 12 -56 18 -75 6 -19 17 -57 23 -85 7 -27 19 -77 26 -110 8 -33 18 -78 23 -100 4 -22 12 -56 18 -75 12 -36 30 -108 43 -170 12 -55 30 -131 45 -185 8 -27 17 -67 20 -87 3 -22 14 -42 25 -48 10 -6 65 -15 122 -20 57 -6 144 -16 193 -22 50 -6 135 -14 190 -18 120 -10 277 -26 440 -45 148 -19 219 -19 233 -2 6 7 16 62 21 122 11 108 21 197 43 345 5 41 14 113 18 160 5 47 13 123 20 170 6 47 18 139 26 205 8 66 19 154 25 195 6 41 15 113 19 160 8 87 20 178 46 356 7 56 14 119 14 140 0 22 6 71 14 111 7 40 11 75 8 78 -7 7 -38 5 -87 -7z"/>
+<path class="yellow l right" d="M1215 2334 c-63 -53 -115 -100 -115 -105 0 -5 39 -9 86 -9 139 0 124 70 124 -595 l0 -575 204 0 c112 0 211 -3 220 -6 12 -5 16 -21 16 -75 0 -81 7 -85 65 -31 23 20 92 82 155 137 169 146 155 132 139 151 -7 9 -18 24 -24 35 -11 19 -88 143 -117 188 -9 14 -23 36 -30 48 -47 80 -102 169 -108 173 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -37 60 -61 100 -24 40 -47 75 -51 78 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -37 60 -61 100 -24 40 -47 75 -51 78 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -43 70 -75 122 -32 53 -64 96 -72 96 -8 0 -66 -43 -130 -96z"/>
+<path class="blue a right" d="M2815 2255 c-51 -13 -144 -30 -246 -45 -31 -4 -79 -12 -105 -18 -84 -18 -166 -33 -239 -43 -101 -13 -101 -13 -87 -166 7 -71 12 -171 12 -223 1 -52 5 -142 10 -200 5 -58 14 -207 20 -333 5 -125 14 -267 20 -315 5 -48 10 -134 10 -192 1 -148 16 -320 29 -333 7 -7 20 -6 46 6 45 22 88 40 145 62 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 58 23 73 31 16 8 33 14 39 14 5 0 24 6 41 14 18 7 57 23 87 35 84 34 91 37 150 64 l55 26 -76 1 c-50 0 -80 5 -87 13 -6 7 -22 48 -37 92 -14 43 -31 83 -38 87 -6 4 -117 8 -245 8 l-232 0 -19 -42 c-42 -95 -51 -119 -51 -133 0 -23 -32 -26 -215 -23 -190 3 -193 5 -161 73 9 18 16 38 16 43 0 6 6 23 14 39 16 32 26 55 57 133 11 30 27 69 34 85 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 8 17 28 66 45 110 18 44 38 94 45 110 7 17 20 47 29 68 26 60 22 67 -31 66 -27 0 -70 -7 -98 -14z"/>
+<path class="yellow s right" d="M6180 2246 c0 -9 4 -24 9 -34 36 -69 69 -246 49 -269 -8 -11 -65 -13 -260 -11 l-250 3 -22 55 c-40 106 -72 130 -170 130 -114 0 -176 -57 -176 -164 0 -91 45 -123 400 -289 120 -55 168 -81 240 -128 62 -40 120 -95 165 -154 76 -101 95 -167 95 -330 0 -163 -21 -236 -100 -350 -49 -71 -49 -71 -110 -122 l-55 -46 65 7 c36 3 126 11 200 16 74 6 159 14 189 20 30 5 82 10 115 10 34 1 122 9 196 19 l135 17 -3 135 c-1 74 -9 224 -17 334 -22 303 -35 511 -45 715 -10 202 -27 371 -39 383 -4 4 -69 12 -145 17 -75 5 -140 11 -145 14 -4 3 -70 10 -147 15 -77 5 -147 13 -157 17 -12 4 -17 1 -17 -10z"/>
+<path class="yellow l left" d="M854 2034 c-16 -14 -60 -51 -99 -82 -38 -31 -86 -71 -105 -88 -19 -18 -60 -51 -90 -75 -51 -40 -88 -70 -114 -94 -6 -6 -36 -30 -66 -55 -30 -25 -60 -49 -66 -55 -6 -5 -42 -35 -79 -65 -37 -30 -82 -68 -99 -83 l-31 -28 120 -116 c66 -64 232 -224 370 -357 324 -313 474 -457 495 -476 9 -8 33 -30 53 -49 l36 -34 28 23 c24 19 62 52 194 171 14 13 52 46 83 73 32 27 54 52 49 57 -5 5 -146 10 -313 11 l-305 3 -3 673 c-2 732 1 698 -58 646z"/>
+<path class="blue a middle" d="M3142 1880 c-5 -14 -15 -43 -21 -65 -7 -22 -17 -53 -23 -70 -5 -16 -14 -46 -18 -65 -8 -33 -16 -59 -41 -132 -19 -55 -23 -108 -8 -108 97 -3 252 0 257 5 3 3 0 20 -7 38 -7 18 -16 48 -21 67 -4 19 -12 46 -17 60 -6 14 -18 52 -28 85 -9 33 -23 78 -31 100 -8 23 -14 50 -14 60 0 11 -4 27 -10 35 -7 12 -11 10 -18 -10z"/>
+</g>
+</svg></a><span> made with </span><span id="heart">❤️</span><span> by </span><a id="theme_author" target="_blank" rel="noopener" href="http://dyingdown.github.io">o_oyao</a><br><span>©Yuxi undefined-2025</span></div><br><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="visits" id="busuanzi_container_site_pv"><div class="visits"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span>  | <i class="fa fa-fw fa-eye"></i> <span id="busuanzi_value_page_pv"></spsan></div></span></div></div><script src="/js/third-party/tools.js"></script><script src="/js/third-party/local-search.js"></script><script src="/js/Message.js"></script><script src="/js/last.js"></script><script src="/js/third-party/social-share.js"></script><script src="/js/third-party/qrcode.js"></script><script src="/js/third-party/tools.js"></script><script src="/js/third-party/clipboard.js"></script><script src="/js/post.js" type="module"></script><script src="https://use.typekit.net/bkt6ydm.js"></script></body></html>
