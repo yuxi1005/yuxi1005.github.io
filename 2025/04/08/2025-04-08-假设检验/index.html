@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>假设检验 [ yuxi ]</title><link rel="stylesheet" href="/css/reset.css"><link rel="stylesheet" href="/css/includes/header.css"><link rel="stylesheet" href="/css/includes/footer.css"><link rel="stylesheet" href="/css/includes/locate-button.css"><link rel="stylesheet" href="/css/includes/pagination.css"><link rel="stylesheet" href="/css/last.css"><link rel="stylesheet" href="/font-awesome/css/all.min.css"><link rel="stylesheet" href="/css/includes/alert/alert.css"><link rel="stylesheet" href="/css/post.css"><link rel="stylesheet" href="/css/third-party/share.min.css"><link rel="stylesheet" href="/css/article/simple.css"><link rel="stylesheet" href="/css/includes/side-user.css"><link rel="stylesheet" href="/css/includes/toc.css"><link rel="stylesheet" href="/css/includes/copyright.css"><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><link rel="stylesheet" href="/css/last.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.min.js"></script><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>var isHome = false;
+var isCenter = false;
+var i18n = {
+    copy: {
+        success: "Copy successful!",
+        error: "Copy failed, please try again!"
+    }
+};
+</script><meta name="generator" content="Hexo 7.3.0"></head><body class="post"><!-- Mixins, used on or off of the page--><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"><div id="menu-outer"><div class="site-name"><a>Yuxi</a></div><div class="menu"><ul class="menu-icon"><li></li><li></li><li></li></ul><ul id="nav"><img class="menu-avatar" src="https://cdn.jsdelivr.net/gh/DyingDown/img-host-repo/202304301831010.jpeg"><div class="menu-items"><li class="item-name"><a class="name-a" href="/"><i class="fas fa-home"></i> Home</a></li><li class="item-name"><a class="name-a" href="/archives"><i class="fas fa-archive"></i> Archives</a></li></div></ul></div></div><div id="content-outer"><div id="content-inner"><div id="post-outer"><div id="mid-col"><div id="post"><div id="titles"><span class="ribbon"><span class="ri">ORIGIN</span></span><div id="first-line"><h1 class="title-center">假设检验</h1><div class="date"><span class="post-title-icons"><i class="fa fa-calendar"></i></span><time class="words" datetime="2025-04-08T14:06:38.494Z">2025-04-08</time></div></div><div id="post-information"></div></div><div id="post-content"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    CommonHTML: {
+        linebreaks: { automatic: true, width: "90% container" }
+    },
+    "HTML-CSS": { 
+        linebreaks: { automatic: true, width: "90% container" }
+    },
+    "SVG": { 
+        linebreaks: { automatic: true, width: "90% container" }
+    }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><h1 id="假设检验">假设检验</h1>
+<p>为了全面复习假设检验的核心知识，系统梳理从<strong>基础概念</strong>到<strong>实际应用</strong>的所有关键点，包括检验统计量、假设设定、错误类型、检验方法选择等。内容分为几个模块，便于逐步理解和记忆。
+<span id="more"></span></p>
+<h3
+id="一假设检验的全流程框架"><strong>一、假设检验的全流程框架</strong></h3>
+<p>假设检验的核心步骤和逻辑链条如下：</p>
+<ol type="1">
+<li><strong>提出假设</strong>
+<ul>
+<li><strong>原假设（H₀）</strong>：默认成立的陈述（如“均值相等”、“无效果”）。<br />
+</li>
+<li><strong>备择假设（H₁）</strong>：希望证实的陈述（如“均值不等”、“有效果”）。<br />
+</li>
+<li><strong>假设方向性</strong>：
+<ul>
+<li>双侧检验（H₁: μ ≠ μ₀）<br />
+</li>
+<li>单侧检验（H₁: μ &gt; μ₀ 或 μ &lt; μ₀）</li>
+</ul></li>
+</ul></li>
+<li><strong>选择检验方法</strong>
+<ul>
+<li>根据数据类型（连续、分类）、样本量、分布假设等选择
+<strong>Z检验/T检验/卡方检验</strong> 等。</li>
+</ul></li>
+<li><strong>计算检验统计量</strong>
+<ul>
+<li>将样本数据转化为标准化统计量（如Z值、T值、卡方值），量化与原假设的偏离程度。</li>
+</ul></li>
+<li><strong>确定显著性水平（α）</strong>
+<ul>
+<li>设定第一类错误的阈值（常用α=0.05）。</li>
+</ul></li>
+<li><strong>计算p值或查临界值</strong>
+<ul>
+<li><strong>p值</strong>：在原假设下，出现当前结果或更极端结果的概率。<br />
+</li>
+<li><strong>临界值</strong>：根据α和分布类型（如Z分布、t分布）确定的拒绝域边界。</li>
+</ul></li>
+<li><strong>决策与结论</strong>
+<ul>
+<li>若 p ≤ α 或检验统计量落入拒绝域 → <strong>拒绝H₀</strong>。<br />
+</li>
+<li>否则 → <strong>不拒绝H₀</strong>（注意：不是“接受H₀”）。</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="二核心概念深度解析"><strong>二、核心概念深度解析</strong></h3>
+<h4 id="原假设h₀与备择假设h₁"><strong>1.
+原假设（H₀）与备择假设（H₁）</strong></h4>
+<ul>
+<li><strong>原假设的本质</strong>：
+<ul>
+<li>默认保守的假设，需强证据才能推翻（类似“无罪推定”）。<br />
+</li>
+<li>通常设定为“无效应”、“无差异”或“等于某值”。</li>
+</ul></li>
+<li><strong>备择假设的方向性</strong>：
+<ul>
+<li>单侧检验（方向明确） vs. 双侧检验（仅关注差异存在性）。<br />
+</li>
+<li><strong>选择依据</strong>：研究问题是否有明确预期（如药物效果是否“优于”对照）。</li>
+</ul></li>
+</ul>
+<h4 id="两类错误与检验功效"><strong>2. 两类错误与检验功效</strong></h4>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 32%" />
+<col style="width: 13%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>错误类型</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>概率符号</strong></th>
+<th><strong>控制方法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>第一类错误</strong></td>
+<td>H₀为真时错误拒绝H₀（假阳性）</td>
+<td>α</td>
+<td>直接设定α（如0.05）</td>
+</tr>
+<tr>
+<td><strong>第二类错误</strong></td>
+<td>H₀为假时未拒绝H₀（假阴性）</td>
+<td>β</td>
+<td>增大样本量、提高α、增大效应量</td>
+</tr>
+<tr>
+<td><strong>检验功效</strong></td>
+<td>正确拒绝H₀的概率（1−β）</td>
+<td>1−β</td>
+<td>通常要求≥80%（通过功效分析规划）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="p值与显著性水平的区别"><strong>3.
+P值与显著性水平的区别</strong></h4>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 42%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>对比项</strong></th>
+<th><strong>P值</strong></th>
+<th><strong>显著性水平α</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定义</strong></td>
+<td>数据支持H₀的概率</td>
+<td>允许的假阳性风险阈值</td>
+</tr>
+<tr>
+<td><strong>计算依据</strong></td>
+<td>根据样本数据计算得出</td>
+<td>研究者预先设定（如0.05）</td>
+</tr>
+<tr>
+<td><strong>决策规则</strong></td>
+<td>若P ≤ α → 拒绝H₀</td>
+<td>作为判断P值是否显著的基准</td>
+</tr>
+<tr>
+<td><strong>常见误解</strong></td>
+<td>“P=0.03表示H₀为真的概率是3%” ❌</td>
+<td>“α=0.05表示有5%的概率犯错” ❌</td>
+</tr>
+</tbody>
+</table>
+<h4 id="置信区间ci与假设检验的等价性"><strong>4.
+置信区间（CI）与假设检验的等价性</strong></h4>
+<ul>
+<li><strong>置信区间</strong>：以一定置信水平（如95%）覆盖总体参数的区间。<br />
+</li>
+<li><strong>与假设检验的关系</strong>：
+<ul>
+<li>若H₀的参数值（如μ=μ₀）<strong>不在置信区间内</strong> →
+拒绝H₀（与P≤α结论一致）。<br />
+</li>
+<li><strong>举例</strong>：若95% CI为 [8.5, 9.8]，而H₀: μ=10 →
+拒绝H₀。</li>
+</ul></li>
+</ul>
+<hr />
+<h3
+id="三不同检验方法的选择与应用"><strong>三、不同检验方法的选择与应用</strong></h3>
+<h4 id="参数检验-vs.-非参数检验"><strong>1. 参数检验 vs.
+非参数检验</strong></h4>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 31%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>特征</strong></th>
+<th><strong>参数检验</strong></th>
+<th><strong>非参数检验</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据要求</strong></td>
+<td>数据符合特定分布（如正态分布）</td>
+<td>无分布假设，适用于任意分布数据</td>
+</tr>
+<tr>
+<td><strong>检验功效</strong></td>
+<td>更高（若假设满足）</td>
+<td>较低（需更大样本量）</td>
+</tr>
+<tr>
+<td><strong>常见方法</strong></td>
+<td>T检验、ANOVA、Pearson相关</td>
+<td>Wilcoxon检验、Mann-Whitney U检验、Kruskal-Wallis检验</td>
+</tr>
+</tbody>
+</table>
+<h4 id="常用检验方法速查表"><strong>2. 常用检验方法速查表</strong></h4>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>检验目标</strong></th>
+<th><strong>适用场景</strong></th>
+<th><strong>检验方法</strong></th>
+<th><strong>检验统计量公式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>单样本均值</strong></td>
+<td>样本均值 vs. 已知总体均值</td>
+<td>Z检验（σ已知）</td>
+<td>( Z = )</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>T检验（σ未知）</td>
+<td>( t = )</td>
+</tr>
+<tr>
+<td><strong>双独立样本均值</strong></td>
+<td>两独立组均值比较（方差齐性）</td>
+<td>独立样本T检验</td>
+<td>( t = )</td>
+</tr>
+<tr>
+<td><strong>配对样本均值</strong></td>
+<td>同一组前后测或配对数据比较</td>
+<td>配对T检验</td>
+<td>( t = )（d为差值）</td>
+</tr>
+<tr>
+<td><strong>多组均值比较</strong></td>
+<td>三组及以上均值差异</td>
+<td>ANOVA（F检验）</td>
+<td>( F = )</td>
+</tr>
+<tr>
+<td><strong>比例检验</strong></td>
+<td>样本比例 vs. 已知比例</td>
+<td>Z比例检验</td>
+<td>( Z = )</td>
+</tr>
+<tr>
+<td><strong>分类变量独立性</strong></td>
+<td>列联表中变量是否独立</td>
+<td>卡方独立性检验</td>
+<td>( ^2 = )</td>
+</tr>
+<tr>
+<td><strong>方差齐性检验</strong></td>
+<td>检验两组或多组方差是否相等</td>
+<td>Levene检验、Bartlett检验</td>
+<td>基于F分布或卡方分布</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3
+id="四实际应用中的关键问题"><strong>四、实际应用中的关键问题</strong></h3>
+<h4 id="如何选择单侧或双侧检验"><strong>1.
+如何选择单侧或双侧检验？</strong></h4>
+<ul>
+<li><strong>双侧检验</strong>：当仅关注差异是否存在，无方向预期（如“药物是否有效？”）。<br />
+</li>
+<li><strong>单侧检验</strong>：当有明确方向预期（如“药物是否<strong>优于</strong>对照？”）。<br />
+</li>
+<li><strong>注意</strong>：单侧检验的p值为双侧检验的一半，但需在数据收集前确定方向，否则可能误用。</li>
+</ul>
+<h4 id="样本量规划与功效分析"><strong>2.
+样本量规划与功效分析</strong></h4>
+<ul>
+<li><strong>核心公式</strong>：<br />
+[ n = ]
+<ul>
+<li>()：期望检测的效应量<br />
+</li>
+<li>(Z_{1-/2})：显著性水平对应的Z值（如α=0.05时，Z=1.96）<br />
+</li>
+<li>(Z_{1-})：功效对应的Z值（如功效80%时，Z=0.84）<br />
+</li>
+</ul></li>
+<li><strong>工具推荐</strong>：使用G*Power、R的<code>pwr</code>包或Python的<code>statsmodels</code>进行功效分析。</li>
+</ul>
+<h4 id="多重检验校正"><strong>3. 多重检验校正</strong></h4>
+<ul>
+<li><strong>问题</strong>：多次检验时，整体第一类错误率膨胀（如检验20次，实际错误率≈64%）。<br />
+</li>
+<li><strong>解决方法</strong>：
+<ul>
+<li><strong>Bonferroni校正</strong>：将每个检验的α调整为 (_{} = /
+m)（m为检验次数）。<br />
+</li>
+<li><strong>False Discovery Rate
+(FDR)</strong>：控制错误发现的比例（常用Benjamini-Hochberg方法）。</li>
+</ul></li>
+</ul>
+<h4 id="效应量的计算与解释"><strong>4. 效应量的计算与解释</strong></h4>
+<ul>
+<li><strong>意义</strong>：量化差异或关联的实际大小，避免仅依赖p值。<br />
+</li>
+<li><strong>常用指标</strong>：
+<ul>
+<li><strong>Cohen's d</strong>（均值差异）：<br />
+[ d = ]</li>
+<li><strong>Cramer's V</strong>（卡方检验效应量）：<br />
+[ V = (k为行列最小值) ]</li>
+<li><strong>Eta-squared（η²）</strong>（ANOVA效应量）：<br />
+[ ^2 = ]</li>
+</ul></li>
+</ul>
+<hr />
+<h3
+id="五常见误区与避坑指南"><strong>五、常见误区与避坑指南</strong></h3>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>误区</strong></th>
+<th><strong>正确理解</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“不拒绝H₀ = 接受H₀”</td>
+<td>不拒绝H₀仅表示证据不足，而非证明H₀为真。</td>
+</tr>
+<tr>
+<td>“p值越小，效应越大”</td>
+<td>p值受样本量影响，大样本可能微小差异也显著。需结合效应量判断实际意义。</td>
+</tr>
+<tr>
+<td>“显著性水平α=0.05是黄金标准”</td>
+<td>α应根据领域和后果调整（如医学研究可能用α=0.01）。</td>
+</tr>
+<tr>
+<td>“忽略数据分布假设”</td>
+<td>参数检验需验证正态性、方差齐性等条件，否则改用非参数检验。</td>
+</tr>
+<tr>
+<td>“盲目使用默认检验方法”</td>
+<td>根据数据类型（连续/分类）、样本量、分布选择合适方法（如小样本用T检验）。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3
+id="六实战演练与复习工具"><strong>六、实战演练与复习工具</strong></h3>
+<h4 id="案例分析新药疗效检验"><strong>1.
+案例分析：新药疗效检验</strong></h4>
+<ul>
+<li><strong>背景</strong>：研发降压药，声称比现有药（均值降10
+mmHg，σ=2）更有效。试验抽取25人，平均降压11
+mmHg，检验是否显著（α=0.05）。<br />
+</li>
+<li><strong>步骤</strong>：
+<ol type="1">
+<li>设定假设：H₀: μ=10 vs. H₁: μ&gt;10（单侧）。<br />
+</li>
+<li>计算Z统计量：( Z = = 2.5 )。<br />
+</li>
+<li>查临界值：单侧α=0.05对应Z=1.645。<br />
+</li>
+<li>结论：Z=2.5 &gt; 1.645 → 拒绝H₀，药物更有效。</li>
+</ol></li>
+</ul>
+<h4 id="可视化工具推荐"><strong>2. 可视化工具推荐</strong></h4>
+<ul>
+<li><strong>分布曲线图</strong>：绘制Z/T分布，标出拒绝域和统计量位置。<br />
+</li>
+<li><strong>置信区间图</strong>：展示点估计与区间范围（如森林图）。<br />
+</li>
+<li><strong>交互式工具</strong>：
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.lock5stat.com/statkey/">StatKey</a>：在线模拟假设检验和抽样分布。<br />
+</li>
+<li><a
+target="_blank" rel="noopener" href="https://jasp-stats.org/">JASP</a>：开源统计软件，可视化分析结果。</li>
+</ul></li>
+</ul>
+<hr />
+<h3
+id="七总结假设检验知识图谱"><strong>七、总结：假设检验知识图谱</strong></h3>
+<pre><code class="highlight markdown">假设检验核心链：
+提出假设 → 选择检验 → 计算统计量 → 确定α → 计算p值 → 决策
+
+关键扩展：
+<span class="bullet">1.</span> 两类错误与功效分析
+<span class="bullet">2.</span> 置信区间与效应量
+<span class="bullet">3.</span> 多重检验校正
+<span class="bullet">4.</span> 参数 vs. 非参数方法
+<span class="bullet">5.</span> 实际意义 vs. 统计显著性</code></pre>
+<p>通过系统梳理和练习，你可以彻底掌握假设检验的逻辑与应用！如果需要具体例题或进一步解释，随时告诉我
+😊</p>
+</div></div><div id="sideButtons"><div id="back-to-top"><i class="fas fa-up"></i><span>TOP</span></div><div id="go-to-comment"><i class="fas fa-comment"></i><span>COMMENT</span></div></div></div></div></div></div><div id="bottom-outer"><div id="bottom-inner"><div id="incons"><a class="icon" href=" mailto:o_oyao@outlook.com " title="E-mail"><i class=" fas fa-fw fa-envelope"></i></a></div><div id="author"><a id="theme_name" target="_blank" rel="noopener" href="https://github.com/DyingDown/hexo-theme-last"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="900.000000pt" height="288.000000pt" viewBox="0 0 900.000000 288.000000" preserveAspectRatio="xMidYMid meet" id="last-icon">
+<g transform="translate(0.000000,288.000000) scale(0.100000,-0.100000)" stroke="none">
+<path class="blue a right" d="M3815 2435 c-45 -12 -134 -28 -220 -41 -16 -2 -64 -11 -105 -19 -41 -8 -96 -17 -122 -20 -45 -6 -48 -8 -48 -34 0 -16 13 -59 29 -97 16 -38 39 -94 51 -124 11 -30 25 -64 29 -75 5 -11 16 -40 26 -65 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 30 -75 7 -16 20 -50 30 -75 9 -25 23 -58 31 -73 8 -16 14 -33 14 -39 0 -5 6 -24 14 -41 20 -48 44 -110 51 -132 3 -11 12 -28 19 -38 13 -17 17 -17 60 -3 25 9 54 20 63 25 10 5 38 17 63 26 25 9 59 23 75 30 17 7 52 21 79 32 26 10 50 24 53 30 3 7 -2 39 -11 70 -10 32 -23 81 -30 108 -19 70 -41 151 -59 215 -9 30 -23 84 -32 120 -9 36 -23 89 -31 118 -8 28 -21 77 -29 107 -44 165 -64 239 -88 325 -9 30 -23 84 -32 120 -10 36 -19 71 -21 78 -4 14 -5 14 -69 -3z"/>
+<path class="yellow s left" d="M4247 2443 c-14 -4 -17 -11 -13 -28 3 -13 10 -270 16 -572 5 -301 13 -577 16 -611 4 -35 9 -240 13 -455 l6 -392 58 -3 c32 -2 108 4 170 12 61 9 135 16 164 16 29 0 99 6 155 14 57 8 148 17 203 21 112 6 157 15 163 33 2 6 -9 14 -25 18 -74 19 -217 134 -271 219 -74 117 -116 259 -110 375 l3 65 265 0 265 0 6 -60 c13 -119 78 -198 172 -210 142 -18 240 78 223 219 -6 57 -44 103 -111 137 -22 11 -47 24 -55 28 -17 10 -79 38 -125 57 -16 6 -48 20 -70 30 -22 9 -53 23 -70 30 -143 61 -252 131 -323 209 -28 31 -58 68 -66 83 -39 73 -54 114 -71 195 -17 83 -17 91 -1 175 10 48 24 101 31 117 8 17 16 37 19 45 6 16 28 52 36 60 3 3 21 25 39 48 43 55 38 59 -88 66 -53 4 -148 13 -211 21 -63 9 -140 15 -171 15 -30 0 -82 5 -115 10 -90 16 -107 17 -127 13z"/>
+<path class="pink t" d="M8655 2428 c-22 -5 -71 -15 -110 -23 -38 -7 -104 -20 -145 -29 -114 -23 -231 -45 -274 -51 -70 -11 -26 -20 127 -25 l152 -5 3 -179 c2 -121 -1 -183 -9 -192 -8 -10 -51 -14 -168 -16 l-156 -3 -3 -645 c-1 -354 -6 -648 -11 -653 -6 -6 -277 -11 -408 -7 -10 0 -13 141 -15 653 l-3 652 -160 3 c-112 2 -161 6 -167 15 -4 6 -8 60 -8 120 l0 107 -27 0 c-15 0 -52 -6 -82 -14 -72 -18 -164 -37 -221 -45 -54 -7 -59 -24 -37 -104 23 -81 38 -139 46 -182 5 -22 14 -62 21 -90 7 -27 18 -72 25 -100 7 -27 18 -70 25 -95 6 -25 15 -63 19 -85 4 -22 12 -56 18 -75 6 -19 17 -57 23 -85 7 -27 19 -77 26 -110 8 -33 18 -78 23 -100 4 -22 12 -56 18 -75 12 -36 30 -108 43 -170 12 -55 30 -131 45 -185 8 -27 17 -67 20 -87 3 -22 14 -42 25 -48 10 -6 65 -15 122 -20 57 -6 144 -16 193 -22 50 -6 135 -14 190 -18 120 -10 277 -26 440 -45 148 -19 219 -19 233 -2 6 7 16 62 21 122 11 108 21 197 43 345 5 41 14 113 18 160 5 47 13 123 20 170 6 47 18 139 26 205 8 66 19 154 25 195 6 41 15 113 19 160 8 87 20 178 46 356 7 56 14 119 14 140 0 22 6 71 14 111 7 40 11 75 8 78 -7 7 -38 5 -87 -7z"/>
+<path class="yellow l right" d="M1215 2334 c-63 -53 -115 -100 -115 -105 0 -5 39 -9 86 -9 139 0 124 70 124 -595 l0 -575 204 0 c112 0 211 -3 220 -6 12 -5 16 -21 16 -75 0 -81 7 -85 65 -31 23 20 92 82 155 137 169 146 155 132 139 151 -7 9 -18 24 -24 35 -11 19 -88 143 -117 188 -9 14 -23 36 -30 48 -47 80 -102 169 -108 173 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -37 60 -61 100 -24 40 -47 75 -51 78 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -37 60 -61 100 -24 40 -47 75 -51 78 -4 3 -10 12 -13 20 -4 8 -15 27 -25 42 -9 15 -43 70 -75 122 -32 53 -64 96 -72 96 -8 0 -66 -43 -130 -96z"/>
+<path class="blue a right" d="M2815 2255 c-51 -13 -144 -30 -246 -45 -31 -4 -79 -12 -105 -18 -84 -18 -166 -33 -239 -43 -101 -13 -101 -13 -87 -166 7 -71 12 -171 12 -223 1 -52 5 -142 10 -200 5 -58 14 -207 20 -333 5 -125 14 -267 20 -315 5 -48 10 -134 10 -192 1 -148 16 -320 29 -333 7 -7 20 -6 46 6 45 22 88 40 145 62 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 59 23 75 30 17 7 50 20 75 30 25 9 58 23 73 31 16 8 33 14 39 14 5 0 24 6 41 14 18 7 57 23 87 35 84 34 91 37 150 64 l55 26 -76 1 c-50 0 -80 5 -87 13 -6 7 -22 48 -37 92 -14 43 -31 83 -38 87 -6 4 -117 8 -245 8 l-232 0 -19 -42 c-42 -95 -51 -119 -51 -133 0 -23 -32 -26 -215 -23 -190 3 -193 5 -161 73 9 18 16 38 16 43 0 6 6 23 14 39 16 32 26 55 57 133 11 30 27 69 34 85 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 7 17 21 50 30 75 10 25 23 59 30 75 8 17 28 66 45 110 18 44 38 94 45 110 7 17 20 47 29 68 26 60 22 67 -31 66 -27 0 -70 -7 -98 -14z"/>
+<path class="yellow s right" d="M6180 2246 c0 -9 4 -24 9 -34 36 -69 69 -246 49 -269 -8 -11 -65 -13 -260 -11 l-250 3 -22 55 c-40 106 -72 130 -170 130 -114 0 -176 -57 -176 -164 0 -91 45 -123 400 -289 120 -55 168 -81 240 -128 62 -40 120 -95 165 -154 76 -101 95 -167 95 -330 0 -163 -21 -236 -100 -350 -49 -71 -49 -71 -110 -122 l-55 -46 65 7 c36 3 126 11 200 16 74 6 159 14 189 20 30 5 82 10 115 10 34 1 122 9 196 19 l135 17 -3 135 c-1 74 -9 224 -17 334 -22 303 -35 511 -45 715 -10 202 -27 371 -39 383 -4 4 -69 12 -145 17 -75 5 -140 11 -145 14 -4 3 -70 10 -147 15 -77 5 -147 13 -157 17 -12 4 -17 1 -17 -10z"/>
+<path class="yellow l left" d="M854 2034 c-16 -14 -60 -51 -99 -82 -38 -31 -86 -71 -105 -88 -19 -18 -60 -51 -90 -75 -51 -40 -88 -70 -114 -94 -6 -6 -36 -30 -66 -55 -30 -25 -60 -49 -66 -55 -6 -5 -42 -35 -79 -65 -37 -30 -82 -68 -99 -83 l-31 -28 120 -116 c66 -64 232 -224 370 -357 324 -313 474 -457 495 -476 9 -8 33 -30 53 -49 l36 -34 28 23 c24 19 62 52 194 171 14 13 52 46 83 73 32 27 54 52 49 57 -5 5 -146 10 -313 11 l-305 3 -3 673 c-2 732 1 698 -58 646z"/>
+<path class="blue a middle" d="M3142 1880 c-5 -14 -15 -43 -21 -65 -7 -22 -17 -53 -23 -70 -5 -16 -14 -46 -18 -65 -8 -33 -16 -59 -41 -132 -19 -55 -23 -108 -8 -108 97 -3 252 0 257 5 3 3 0 20 -7 38 -7 18 -16 48 -21 67 -4 19 -12 46 -17 60 -6 14 -18 52 -28 85 -9 33 -23 78 -31 100 -8 23 -14 50 -14 60 0 11 -4 27 -10 35 -7 12 -11 10 -18 -10z"/>
+</g>
+</svg></a><span> made with </span><span id="heart">❤️</span><span> by </span><a id="theme_author" target="_blank" rel="noopener" href="http://dyingdown.github.io">o_oyao</a><br><span>©Yuxi undefined-2025</span></div><br><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="visits" id="busuanzi_container_site_pv"><div class="visits"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span>  | <i class="fa fa-fw fa-eye"></i> <span id="busuanzi_value_page_pv"></spsan></div></span></div></div><script src="/js/third-party/tools.js"></script><script src="/js/third-party/local-search.js"></script><script src="/js/Message.js"></script><script src="/js/last.js"></script><script src="/js/third-party/social-share.js"></script><script src="/js/third-party/qrcode.js"></script><script src="/js/third-party/tools.js"></script><script src="/js/third-party/clipboard.js"></script><script src="/js/post.js" type="module"></script><script src="https://use.typekit.net/bkt6ydm.js"></script></body></html>
